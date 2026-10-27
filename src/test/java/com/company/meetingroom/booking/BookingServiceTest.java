@@ -10,6 +10,7 @@ import static org.mockito.Mockito.when;
 import com.company.meetingroom.auth.AuthUser;
 import com.company.meetingroom.auth.Role;
 import com.company.meetingroom.booking.BookingDtos.CreateBookingRequest;
+import com.company.meetingroom.booking.BookingDtos.UpdateBookingRequest;
 import com.company.meetingroom.common.ApiException;
 import com.company.meetingroom.room.Room;
 import com.company.meetingroom.room.RoomService;
@@ -115,6 +116,44 @@ class BookingServiceTest {
                 .isInstanceOfSatisfying(ApiException.class,
                         e -> assertThat(e.getCode()).isEqualTo("BOOKING_ALREADY_STARTED"));
         assertThat(b.getStatus()).isEqualTo(BookingStatus.CONFIRMED);
+    }
+
+    @Test
+    void inProgressBookingCanExtendEndTimeButNotChangeStartOrRoom() {
+        Instant start = NOW.minusSeconds(1800);
+        Booking b = new Booking(room(10, true), 1L, "t", 2, start, NOW.plusSeconds(1800));
+        when(bookings.findById(5L)).thenReturn(java.util.Optional.of(b));
+        when(bookings.saveAndFlush(any())).thenAnswer(i -> i.getArgument(0));
+
+        service.update(user, 5L, new UpdateBookingRequest(null, null, null, null, NOW.plusSeconds(5400)));
+        assertThat(b.getEndTime()).isEqualTo(NOW.plusSeconds(5400));
+
+        assertThatThrownBy(() -> service.update(user, 5L,
+                new UpdateBookingRequest(null, null, null, start.minusSeconds(60), null)))
+                .isInstanceOfSatisfying(ApiException.class, e -> assertThat(e.getCode()).isEqualTo("BOOKING_IN_PROGRESS"));
+        assertThatThrownBy(() -> service.update(user, 5L, new UpdateBookingRequest(99L, null, null, null, null)))
+                .isInstanceOfSatisfying(ApiException.class, e -> assertThat(e.getCode()).isEqualTo("BOOKING_IN_PROGRESS"));
+    }
+
+    @Test
+    void inProgressBookingCannotBeShortenedIntoThePast() {
+        Booking b = new Booking(room(10, true), 1L, "t", 2, NOW.minusSeconds(3600), NOW.plusSeconds(1800));
+        when(bookings.findById(5L)).thenReturn(java.util.Optional.of(b));
+        assertThatThrownBy(() -> service.update(user, 5L,
+                new UpdateBookingRequest(null, null, null, null, NOW.minusSeconds(60))))
+                .isInstanceOfSatisfying(ApiException.class, e -> assertThat(e.getCode()).isEqualTo("BOOKING_IN_PAST"));
+        verify(bookings, never()).saveAndFlush(any());
+    }
+
+    @Test
+    void endedBookingCannotBeUpdated() {
+        Booking b = new Booking(room(10, true), 1L, "t", 2, NOW.minusSeconds(7200), NOW.minusSeconds(3600));
+        when(bookings.findById(5L)).thenReturn(java.util.Optional.of(b));
+        assertThatThrownBy(() -> service.update(user, 5L, new UpdateBookingRequest(null, "new", null, null, null)))
+                .isInstanceOfSatisfying(ApiException.class, e -> {
+                    assertThat(e.getStatus()).isEqualTo(HttpStatus.CONFLICT);
+                    assertThat(e.getCode()).isEqualTo("BOOKING_ALREADY_ENDED");
+                });
     }
 
     @Test

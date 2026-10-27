@@ -19,6 +19,19 @@ public final class BookingDtos {
             @NotNull Instant endTime) {
     }
 
+    /** Partial update: null fields are left unchanged. */
+    public record UpdateBookingRequest(
+            Long roomId,
+            @Size(max = 200) String title,
+            @Min(1) Integer attendees,
+            Instant startTime,
+            Instant endTime) {
+
+        public boolean isEmpty() {
+            return roomId == null && title == null && attendees == null && startTime == null && endTime == null;
+        }
+    }
+
     public record BookingResponse(Long id, Long roomId, String roomName, Long userId, String title, int attendees,
                                   Instant startTime, Instant endTime, BookingStatus status, Instant createdAt,
                                   Instant cancelledAt) {

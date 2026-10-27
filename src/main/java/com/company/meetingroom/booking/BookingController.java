@@ -3,6 +3,7 @@ package com.company.meetingroom.booking;
 import com.company.meetingroom.auth.AuthUser;
 import com.company.meetingroom.booking.BookingDtos.BookingResponse;
 import com.company.meetingroom.booking.BookingDtos.CreateBookingRequest;
+import com.company.meetingroom.booking.BookingDtos.UpdateBookingRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -15,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,6 +58,12 @@ public class BookingController {
             @RequestParam(defaultValue = "20") @Min(1) @Max(100) int size) {
         return service.search(user, roomId, from, to, mine, includeCancelled,
                 PageRequest.of(page, size, Sort.by("startTime", "id")));
+    }
+
+    @PatchMapping("/{id}")
+    public BookingResponse update(@AuthenticationPrincipal AuthUser user, @PathVariable Long id,
+                                  @Valid @RequestBody UpdateBookingRequest request) {
+        return service.update(user, id, request);
     }
 
     @PostMapping("/{id}/cancel")

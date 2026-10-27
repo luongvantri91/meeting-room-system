@@ -22,6 +22,9 @@ services:
       DB_URL: jdbc:postgresql://db:5432/meetingroom
       DB_USER: ${DB_USER:-meetingroom}
       DB_PASSWORD: ${DB_PASSWORD:-meetingroom}
+      JWT_SECRET: ${JWT_SECRET:-dev-only-secret-change-me-0123456789abcdef}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@company.local}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-ChangeMe123!}
     ports:
       - "8080:8080"
     healthcheck:

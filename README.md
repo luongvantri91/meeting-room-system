@@ -29,7 +29,7 @@ Không cần Docker – test dùng PostgreSQL nhúng (zonky embedded-postgres):
 mvn verify
 ```
 
-51 test: unit (service, JWT), integration API (MockMvc + PostgreSQL thật), test ràng buộc DB và test đồng thời
+63 test: unit (service, JWT), integration API (MockMvc + PostgreSQL thật), test ràng buộc DB và test đồng thời
 (12 request cùng lúc đặt 1 phòng/1 khung giờ → đúng 1 thành công). CI: `.github/workflows/ci.yml`.
 
 ## 3. API (`/api/v1`)
@@ -49,6 +49,7 @@ Xác thực: header `Authorization: Bearer <token>`. Lỗi theo RFC 7807 (`appli
 | GET | `/bookings?roomId=&from=&to=&mine=&includeCancelled=` | đăng nhập | lịch đặt phòng (calendar) |
 | GET | `/bookings/{id}` | đăng nhập | chi tiết (xem được mọi booking) |
 | POST | `/bookings/{id}/cancel` | chủ booking / ADMIN | hủy |
+| PATCH | `/bookings/{id}` | chủ booking / ADMIN | sửa phòng, giờ, tiêu đề, số người |
 
 Ví dụ:
 
@@ -71,7 +72,7 @@ curl "localhost:8080/api/v1/rooms/available?from=2030-01-10T02:00:00Z&to=2030-01
 ```
 
 Mã lỗi: `400` dữ liệu/khoảng thời gian sai · `401/403` chưa đăng nhập/không đủ quyền · `404` không tìm thấy ·
-`409` xung đột (trùng lịch, trùng tên/email, booking đã bắt đầu, phòng còn booking sắp tới) ·
+`409` xung đột (trùng lịch, trùng tên/email, booking đã bắt đầu/đã hủy/đã kết thúc không sửa được, phòng còn booking sắp tới) ·
 `422` vi phạm nghiệp vụ (phòng ngừng hoạt động, vượt sức chứa, đặt vào quá khứ, thời lượng ngoài 15 phút–8 giờ).
 
 ## 4. Thiết kế

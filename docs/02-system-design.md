@@ -61,8 +61,14 @@ WHERE (status = 'CONFIRMED')
 | GET | /bookings/{id} | đăng nhập | Chi tiết (xem được mọi booking) | 200 |
 | GET | /bookings?roomId&from&to&mine | auth | Lịch (phân trang) | 200 |
 | POST | /bookings/{id}/cancel | chủ/ADMIN | Hủy | 200 |
+| PATCH | /bookings/{id} | chủ/ADMIN | Sửa một phần (phòng, giờ, tiêu đề, số người) | 200 |
 
-Mã lỗi: 400 validation, 401, 403, 404, 409 trùng lịch / email trùng / vô hiệu hóa phòng còn booking, 422 phòng inactive / vượt sức chứa / thời gian quá khứ.
+Mã lỗi: 400 validation, 401, 403, 404, 409 trùng lịch / email trùng / vô hiệu hóa phòng còn booking / booking đã hủy, đã kết thúc hoặc đang diễn ra bị sửa trường bị khóa, 422 phòng inactive / vượt sức chứa / thời gian quá khứ.
+
+**Sửa booking (`PATCH /bookings/{id}`):** body gồm các trường tùy chọn `roomId`, `title`, `attendees`, `startTime`, `endTime` (trường vắng mặt giữ nguyên, phải có ít nhất một trường). Booking sau khi sửa được kiểm tra lại đầy đủ như khi tạo mới (giờ, thời lượng, phòng hoạt động, sức chứa, trùng lịch **loại trừ chính nó**; constraint của DB vẫn là chốt chặn cuối khi có request đồng thời).
+- Booking chưa bắt đầu: sửa được mọi trường.
+- Booking đang diễn ra: chỉ sửa `endTime` (gia hạn / rút ngắn nhưng vẫn phải ở tương lai), `title`, `attendees`; đổi phòng hoặc `startTime` → 409 `BOOKING_IN_PROGRESS`.
+- Booking đã hủy → 409 `BOOKING_CANCELLED`; đã kết thúc → 409 `BOOKING_ALREADY_ENDED`.
 
 Body lỗi:
 ```json

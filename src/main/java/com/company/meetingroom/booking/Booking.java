@@ -107,4 +107,12 @@ public class Booking {
         this.status = BookingStatus.CANCELLED;
         this.cancelledAt = now;
     }
+
+    public void reschedule(Room room, String title, int attendees, Instant startTime, Instant endTime) {
+        this.room = room;
+        this.title = title;
+        this.attendees = attendees;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
 }

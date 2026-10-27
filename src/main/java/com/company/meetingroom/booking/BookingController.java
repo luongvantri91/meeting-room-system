@@ -40,8 +40,8 @@ public class BookingController {
     }
 
     @GetMapping("/{id}")
-    public BookingResponse get(@AuthenticationPrincipal AuthUser user, @PathVariable Long id) {
-        return service.get(user, id);
+    public BookingResponse get(@PathVariable Long id) {
+        return service.get(id);
     }
 
     @GetMapping

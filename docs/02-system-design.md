@@ -58,7 +58,7 @@ WHERE (status = 'CONFIRMED')
 | PATCH | /rooms/{id} | ADMIN | Cập nhật một phần (gồm `active`) | 200 |
 | GET | /rooms/available?from&to&minCapacity | auth | Tìm phòng trống | 200 |
 | POST | /bookings | auth | Đặt phòng | 201 |
-| GET | /bookings/{id} | chủ/ADMIN | Chi tiết | 200 |
+| GET | /bookings/{id} | đăng nhập | Chi tiết (xem được mọi booking) | 200 |
 | GET | /bookings?roomId&from&to&mine | auth | Lịch (phân trang) | 200 |
 | POST | /bookings/{id}/cancel | chủ/ADMIN | Hủy | 200 |
 

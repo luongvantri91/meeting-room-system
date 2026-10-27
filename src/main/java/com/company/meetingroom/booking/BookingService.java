@@ -63,9 +63,8 @@ public class BookingService {
     }
 
     @Transactional(readOnly = true)
-    public BookingResponse get(AuthUser actor, Long id) {
+    public BookingResponse get(Long id) {
         Booking booking = find(id);
-        assertCanAccess(actor, booking);
         return BookingResponse.from(booking);
     }
 
@@ -97,7 +96,7 @@ public class BookingService {
     @Transactional
     public BookingResponse cancel(AuthUser actor, Long id) {
         Booking booking = find(id);
-        assertCanAccess(actor, booking);
+        assertCanCancel(actor, booking);
         if (booking.getStatus() == BookingStatus.CANCELLED) {
             return BookingResponse.from(booking);
         }
@@ -114,9 +113,9 @@ public class BookingService {
                 .orElseThrow(() -> ApiException.notFound("BOOKING_NOT_FOUND", "Booking " + id + " not found"));
     }
 
-    private static void assertCanAccess(AuthUser actor, Booking booking) {
+    private static void assertCanCancel(AuthUser actor, Booking booking) {
         if (!actor.isAdmin() && !booking.getUserId().equals(actor.id())) {
-            throw ApiException.forbidden("FORBIDDEN", "You can only access your own bookings");
+            throw ApiException.forbidden("FORBIDDEN", "You can only cancel your own bookings");
         }
     }
 

@@ -47,16 +47,17 @@ class BookingQueryCancelApiTest extends BookingApiTestBase {
     }
 
     @Test
-    void otherUserCannotCancelButAdminCan() throws Exception {
+    void otherUserCanViewButCannotCancelWhileAdminCan() throws Exception {
         String owner = TestAuth.newUserToken(mvc);
         String other = TestAuth.newUserToken(mvc);
         long room = createRoom(10);
         Instant s = BASE.plus(Duration.ofDays(12));
         long id = bookId(owner, room, s, s.plus(H));
 
-        mvc.perform(post("/api/v1/bookings/" + id + "/cancel").header(HttpHeaders.AUTHORIZATION, other))
-                .andExpect(status().isForbidden());
         mvc.perform(get("/api/v1/bookings/" + id).header(HttpHeaders.AUTHORIZATION, other))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(id));
+        mvc.perform(post("/api/v1/bookings/" + id + "/cancel").header(HttpHeaders.AUTHORIZATION, other))
                 .andExpect(status().isForbidden());
         mvc.perform(post("/api/v1/bookings/" + id + "/cancel").header(HttpHeaders.AUTHORIZATION, admin()))
                 .andExpect(status().isOk());

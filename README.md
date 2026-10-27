@@ -47,7 +47,7 @@ Xác thực: header `Authorization: Bearer <token>`. Lỗi theo RFC 7807 (`appli
 | GET | `/rooms/available?from=&to=&minCapacity=` | đăng nhập | tìm phòng trống |
 | POST | `/bookings` | đăng nhập | đặt phòng |
 | GET | `/bookings?roomId=&from=&to=&mine=&includeCancelled=` | đăng nhập | lịch đặt phòng (calendar) |
-| GET | `/bookings/{id}` | chủ booking / ADMIN | chi tiết |
+| GET | `/bookings/{id}` | đăng nhập | chi tiết (xem được mọi booking) |
 | POST | `/bookings/{id}/cancel` | chủ booking / ADMIN | hủy |
 
 Ví dụ:
@@ -82,7 +82,7 @@ Client → Controller → Service → Repository → PostgreSQL
 ```
 
 Package `com.company.meetingroom`: `auth`, `room`, `booking`, `common`. Tài liệu chi tiết:
-[yêu cầu](docs/01-requirements.md) · [thiết kế hệ thống](docs/02-system-design.md) · [quy trình](docs/process-build.md).
+[yêu cầu](docs/01-requirements.md) · [thiết kế hệ thống](docs/02-system-design.md) · [quy trình](docs/personal-idea.md).
 
 ### Quyết định kỹ thuật
 

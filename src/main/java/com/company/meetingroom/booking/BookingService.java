@@ -5,11 +5,14 @@ import com.company.meetingroom.booking.BookingDtos.BookingResponse;
 import com.company.meetingroom.booking.BookingDtos.CreateBookingRequest;
 import com.company.meetingroom.common.ApiException;
 import com.company.meetingroom.room.Room;
+import com.company.meetingroom.room.RoomDtos.PageResponse;
 import com.company.meetingroom.room.RoomService;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -56,6 +59,64 @@ public class BookingService {
                 throw conflict();
             }
             throw e;
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public BookingResponse get(AuthUser actor, Long id) {
+        Booking booking = find(id);
+        assertCanAccess(actor, booking);
+        return BookingResponse.from(booking);
+    }
+
+    @Transactional(readOnly = true)
+    public PageResponse<BookingResponse> search(AuthUser actor, Long roomId, Instant from, Instant to,
+                                                boolean mine, boolean includeCancelled, Pageable pageable) {
+        if (from != null && to != null && !to.isAfter(from)) {
+            throw ApiException.badRequest("INVALID_TIME_RANGE", "to must be after from");
+        }
+        Specification<Booking> spec = (root, query, cb) -> cb.conjunction();
+        if (roomId != null) {
+            spec = spec.and((root, q, cb) -> cb.equal(root.get("room").get("id"), roomId));
+        }
+        if (from != null) {
+            spec = spec.and((root, q, cb) -> cb.greaterThan(root.get("endTime"), from));
+        }
+        if (to != null) {
+            spec = spec.and((root, q, cb) -> cb.lessThan(root.get("startTime"), to));
+        }
+        if (mine) {
+            spec = spec.and((root, q, cb) -> cb.equal(root.get("userId"), actor.id()));
+        }
+        if (!includeCancelled) {
+            spec = spec.and((root, q, cb) -> cb.equal(root.get("status"), BookingStatus.CONFIRMED));
+        }
+        return PageResponse.from(bookings.findAll(spec, pageable), BookingResponse::from);
+    }
+
+    @Transactional
+    public BookingResponse cancel(AuthUser actor, Long id) {
+        Booking booking = find(id);
+        assertCanAccess(actor, booking);
+        if (booking.getStatus() == BookingStatus.CANCELLED) {
+            return BookingResponse.from(booking);
+        }
+        Instant now = clock.instant();
+        if (!booking.getStartTime().isAfter(now)) {
+            throw ApiException.conflict("BOOKING_ALREADY_STARTED", "A booking that has started cannot be cancelled");
+        }
+        booking.cancel(now);
+        return BookingResponse.from(booking);
+    }
+
+    private Booking find(Long id) {
+        return bookings.findById(id)
+                .orElseThrow(() -> ApiException.notFound("BOOKING_NOT_FOUND", "Booking " + id + " not found"));
+    }
+
+    private static void assertCanAccess(AuthUser actor, Booking booking) {
+        if (!actor.isAdmin() && !booking.getUserId().equals(actor.id())) {
+            throw ApiException.forbidden("FORBIDDEN", "You can only access your own bookings");
         }
     }
 

@@ -4,3 +4,4 @@ target/
 *.iml
 .env
 luong-van-tri-cv.md
+*.log

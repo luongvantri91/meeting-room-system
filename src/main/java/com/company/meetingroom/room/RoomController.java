@@ -7,8 +7,11 @@ import com.company.meetingroom.room.RoomDtos.UpdateRoomRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import java.time.Instant;
+import java.util.List;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +48,14 @@ public class RoomController {
             @RequestParam(defaultValue = "0") @Min(0) int page,
             @RequestParam(defaultValue = "20") @Min(1) @Max(100) int size) {
         return service.list(active, minCapacity, PageRequest.of(page, size, Sort.by("name")));
+    }
+
+    @GetMapping("/available")
+    public List<RoomResponse> available(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant from,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant to,
+            @RequestParam(defaultValue = "1") @Min(1) int minCapacity) {
+        return service.findAvailable(from, to, minCapacity);
     }
 
     @GetMapping("/{id}")

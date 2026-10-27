@@ -82,7 +82,7 @@ Client → Controller → Service → Repository → PostgreSQL
 ```
 
 Package `com.company.meetingroom`: `auth`, `room`, `booking`, `common`. Tài liệu chi tiết:
-[yêu cầu](docs/01-requirements.md) · [thiết kế hệ thống](docs/02-system-design.md) · [quy trình](docs/process-build.md).
+[yêu cầu](docs/01-requirements.md) · [thiết kế hệ thống](docs/02-system-design.md) · [quy trình](docs/personal-idea.md).
 
 ### Quyết định kỹ thuật
 

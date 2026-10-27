@@ -33,6 +33,13 @@ server:
     include-stacktrace: never
     include-message: never
 
+logging:
+  pattern:
+    level: "%5p [%X{requestId:-}]"
+  level:
+    # Overlap conflicts are expected and translated to HTTP 409; avoid duplicate noisy SQL error logs.
+    org.hibernate.engine.jdbc.spi.SqlExceptionHelper: "OFF"
+
 management:
   endpoints:
     web:

@@ -107,6 +107,26 @@ class BookingServiceTest {
     }
 
     @Test
+    void cancelRejectsBookingThatAlreadyStarted() {
+        Room r = room(10, true);
+        Booking b = new Booking(r, 1L, "t", 2, NOW.minusSeconds(60), NOW.plusSeconds(3600));
+        when(bookings.findById(5L)).thenReturn(java.util.Optional.of(b));
+        assertThatThrownBy(() -> service.cancel(user, 5L))
+                .isInstanceOfSatisfying(ApiException.class,
+                        e -> assertThat(e.getCode()).isEqualTo("BOOKING_ALREADY_STARTED"));
+        assertThat(b.getStatus()).isEqualTo(BookingStatus.CONFIRMED);
+    }
+
+    @Test
+    void cancelByAnotherNonAdminUserIsForbidden() {
+        Booking b = new Booking(room(10, true), 99L, "t", 2, NOW.plusSeconds(3600), NOW.plusSeconds(7200));
+        when(bookings.findById(5L)).thenReturn(java.util.Optional.of(b));
+        assertThatThrownBy(() -> service.cancel(user, 5L))
+                .isInstanceOfSatisfying(ApiException.class, e -> assertThat(e.getStatus()).isEqualTo(HttpStatus.FORBIDDEN));
+        assertThat(b.getStatus()).isEqualTo(BookingStatus.CONFIRMED);
+    }
+
+    @Test
     void detectsExclusionConstraintViolationInCauseChain() {
         Throwable root = new RuntimeException("conflicting key value violates exclusion constraint \""
                 + BookingService.OVERLAP_CONSTRAINT + "\"");

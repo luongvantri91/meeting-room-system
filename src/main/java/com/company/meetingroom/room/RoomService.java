@@ -5,6 +5,10 @@ import com.company.meetingroom.room.RoomDtos.CreateRoomRequest;
 import com.company.meetingroom.room.RoomDtos.PageResponse;
 import com.company.meetingroom.room.RoomDtos.RoomResponse;
 import com.company.meetingroom.room.RoomDtos.UpdateRoomRequest;
+import com.company.meetingroom.booking.BookingRepository;
+import java.time.Clock;
+import java.time.Instant;
+import java.util.List;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -14,9 +18,21 @@ import org.springframework.transaction.annotation.Transactional;
 public class RoomService {
 
     private final RoomRepository rooms;
+    private final BookingRepository bookings;
+    private final Clock clock;
 
-    public RoomService(RoomRepository rooms) {
+    public RoomService(RoomRepository rooms, BookingRepository bookings, Clock clock) {
         this.rooms = rooms;
+        this.bookings = bookings;
+        this.clock = clock;
+    }
+
+    @Transactional(readOnly = true)
+    public List<RoomResponse> findAvailable(Instant from, Instant to, int minCapacity) {
+        if (!to.isAfter(from)) {
+            throw ApiException.badRequest("INVALID_TIME_RANGE", "to must be after from");
+        }
+        return rooms.findAvailable(from, to, minCapacity).stream().map(RoomResponse::from).toList();
     }
 
     @Transactional
@@ -62,6 +78,11 @@ public class RoomService {
             room.setLocation(req.location());
         }
         if (req.active() != null) {
+            if (!req.active() && room.isActive()
+                    && bookings.existsUpcomingConfirmed(room.getId(), clock.instant())) {
+                throw ApiException.conflict("ROOM_HAS_UPCOMING_BOOKINGS",
+                        "Room has upcoming confirmed bookings; cancel them before deactivating");
+            }
             room.setActive(req.active());
         }
         try {

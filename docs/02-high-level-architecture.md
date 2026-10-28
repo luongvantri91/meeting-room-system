@@ -239,4 +239,5 @@ Một lỗ hổng nhỏ đã biết: `PATCH /rooms/{id}` cho hạ sức chứa t
 |---|---|
 | Quy tắc nghiệp vụ, tiêu chí nghiệm thu | [01-requirements.md](01-requirements.md) |
 | Bảng DB, API, mã lỗi, thứ tự kiểm tra | [03-system-design.md](03-system-design.md) |
-| Cách chạy, ví dụ `curl` | [../README.md](../README.md) |
+| Cách chạy | [../README.md](../README.md) |
+| Endpoint, ví dụ `curl`, mã lỗi | [04-api-reference.md](04-api-reference.md) |

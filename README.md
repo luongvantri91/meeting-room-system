@@ -1,109 +1,103 @@
 # Meeting Room Booking System
 
-Backend REST API đặt phòng họp cho công ty (~10 phòng, ~200 nhân viên).
-Java 17 · Spring Boot 3 · PostgreSQL 16 · Flyway · JWT · Docker.
+[![CI](https://github.com/luongvantri91/meeting-room-system/actions/workflows/ci.yml/badge.svg)](https://github.com/luongvantri91/meeting-room-system/actions/workflows/ci.yml)
+![Java 17](https://img.shields.io/badge/Java-17-blue)
+![Spring Boot 3](https://img.shields.io/badge/Spring%20Boot-3.3-brightgreen)
+![PostgreSQL 16](https://img.shields.io/badge/PostgreSQL-16-336791)
 
-## 1. Chạy hệ thống
+Backend REST API đặt phòng họp cho công ty (~10 phòng, ~200 nhân viên).
+Điểm nhấn: **không bao giờ đặt trùng phòng**, kể cả khi nhiều request đến cùng lúc.
+
+## 📌 Tính năng chính
+
+- Đăng ký / đăng nhập bằng JWT, phân quyền `USER` / `ADMIN`.
+- Quản lý phòng: tạo, sửa, vô hiệu hóa; tìm phòng trống theo khung giờ và sức chứa.
+- Đặt, sửa, hủy phòng; xem lịch (calendar) theo phòng hoặc theo người đặt.
+- Lỗi trả về chuẩn RFC 7807 kèm mã `code` ổn định.
+
+## 🛠️ Công nghệ sử dụng
+
+| Thành phần | Công nghệ |
+|------------|-----------|
+| Ngôn ngữ / framework | Java 17, Spring Boot 3 (Web, Data JPA, Security, Validation, Actuator) |
+| Cơ sở dữ liệu | PostgreSQL 16, Flyway (migration) |
+| Bảo mật | JWT (jjwt), BCrypt |
+| Test | JUnit 5, MockMvc, embedded PostgreSQL (zonky), Postman |
+| Đóng gói / CI | Docker, Docker Compose, GitHub Actions |
+
+## 🚀 Cài đặt & Chạy thử
+
+**Cách 1 – Docker Compose**
 
 ```bash
 docker compose up --build
 ```
 
-API chạy tại `http://localhost:8080`, health check: `GET /actuator/health`.
-
-Biến môi trường (xem [.env.example](.env.example); compose có giá trị mặc định cho dev):
-
-| Biến | Ý nghĩa | Mặc định (dev) |
-|------|---------|----------------|
-| `DB_USER` / `DB_PASSWORD` | tài khoản PostgreSQL | `meetingroom` / `meetingroom` |
-| `JWT_SECRET` | khóa ký JWT, **bắt buộc**, ≥ 32 ký tự | giá trị dev trong compose |
-| `ADMIN_EMAIL` / `ADMIN_PASSWORD` | admin được tạo lúc khởi động | `admin@company.local` / `ChangeMe123!` |
-
-> Production: bắt buộc đổi `JWT_SECRET`, `ADMIN_PASSWORD`, `DB_PASSWORD`.
-
-## 2. Chạy test
-
-Không cần Docker – test dùng PostgreSQL nhúng (zonky embedded-postgres):
+**Cách 2 – PostgreSQL bằng Docker, app bằng Maven** (Java 17 + Maven)
 
 ```bash
-mvn verify
+docker run -d --name pg -p 5432:5432 \
+  -e POSTGRES_DB=meetingroom -e POSTGRES_USER=meetingroom -e POSTGRES_PASSWORD=meetingroom \
+  postgres:16-alpine
+
+export JWT_SECRET=dev-only-secret-change-me-0123456789abcdef
+export ADMIN_EMAIL=admin@company.local ADMIN_PASSWORD='ChangeMe123!'
+mvn spring-boot:run -DskipTests
 ```
 
-63 test: unit (service, JWT), integration API (MockMvc + PostgreSQL thật), test ràng buộc DB và test đồng thời
-(12 request cùng lúc đặt 1 phòng/1 khung giờ → đúng 1 thành công). CI: `.github/workflows/ci.yml`.
+API chạy tại `http://localhost:8080` · health check `GET /actuator/health` · admin dev: `admin@company.local` / `ChangeMe123!`.
+Biến môi trường xem [.env.example](.env.example); **production bắt buộc đổi** `JWT_SECRET`, `ADMIN_PASSWORD`, `DB_PASSWORD`.
 
-## 3. API (`/api/v1`)
-
-Xác thực: header `Authorization: Bearer <token>`. Lỗi theo RFC 7807 (`application/problem+json`) kèm trường `code`.
-
-| Method | Path | Quyền | Mô tả |
-|--------|------|-------|-------|
-| POST | `/auth/register` | public | đăng ký (role USER) |
-| POST | `/auth/login` | public | đăng nhập, nhận JWT |
-| POST | `/rooms` | ADMIN | tạo phòng |
-| GET | `/rooms?active=&minCapacity=&page=&size=` | đăng nhập | danh sách phòng |
-| GET | `/rooms/{id}` | đăng nhập | chi tiết phòng |
-| PATCH | `/rooms/{id}` | ADMIN | sửa / vô hiệu hóa phòng |
-| GET | `/rooms/available?from=&to=&minCapacity=` | đăng nhập | tìm phòng trống |
-| POST | `/bookings` | đăng nhập | đặt phòng |
-| GET | `/bookings?roomId=&from=&to=&mine=&includeCancelled=` | đăng nhập | lịch đặt phòng (calendar) |
-| GET | `/bookings/{id}` | đăng nhập | chi tiết (xem được mọi booking) |
-| POST | `/bookings/{id}/cancel` | chủ booking / ADMIN | hủy |
-| PATCH | `/bookings/{id}` | chủ booking / ADMIN | sửa phòng, giờ, tiêu đề, số người |
-
-Ví dụ:
+**Thử nhanh**
 
 ```bash
-# Đăng nhập admin
 TOKEN=$(curl -s localhost:8080/api/v1/auth/login -H 'Content-Type: application/json' \
   -d '{"email":"admin@company.local","password":"ChangeMe123!"}' | jq -r .accessToken)
-
-# Tạo phòng
-curl -X POST localhost:8080/api/v1/rooms -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' \
-  -d '{"name":"Phòng A","capacity":10,"location":"Tầng 2"}'
-
-# Đặt phòng (thời gian ISO-8601, UTC)
-curl -X POST localhost:8080/api/v1/bookings -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' \
-  -d '{"roomId":1,"title":"Sprint planning","attendees":6,"startTime":"2030-01-10T02:00:00Z","endTime":"2030-01-10T03:00:00Z"}'
-
-# Tìm phòng trống
-curl "localhost:8080/api/v1/rooms/available?from=2030-01-10T02:00:00Z&to=2030-01-10T03:00:00Z&minCapacity=5" \
-  -H "Authorization: Bearer $TOKEN"
+curl localhost:8080/api/v1/rooms -H "Authorization: Bearer $TOKEN"
 ```
 
-Mã lỗi: `400` dữ liệu/khoảng thời gian sai · `401/403` chưa đăng nhập/không đủ quyền · `404` không tìm thấy ·
-`409` xung đột (trùng lịch, trùng tên/email, booking đã bắt đầu/đã hủy/đã kết thúc không sửa được, phòng còn booking sắp tới) ·
-`422` vi phạm nghiệp vụ (phòng ngừng hoạt động, vượt sức chứa, đặt vào quá khứ, thời lượng ngoài 15 phút–8 giờ).
+Danh sách endpoint, ví dụ và mã lỗi: **[Tài liệu API](docs/04-api-reference.md)**.
 
-## 4. Thiết kế
+**Kiểm thử**
 
-```
-Client → Controller → Service → Repository → PostgreSQL
-          (validation, authz)   (business rules)   (constraints)
+```bash
+mvn verify   # không cần Docker, dùng PostgreSQL nhúng
 ```
 
-Package `com.company.meetingroom`: `auth`, `room`, `booking`, `common`. Tài liệu chi tiết:
-[yêu cầu](docs/01-requirements.md) · [thiết kế hệ thống](docs/02-system-design.md) · [quy trình](docs/personal-idea.md).
+| Loại | Quy mô | Kết quả |
+|------|--------|---------|
+| Tự động (unit, integration, ràng buộc DB, đồng thời) | 63 test | chạy trong CI |
+| Thủ công bằng Postman | 141 request, 284 assertion | 0 lỗi – [bằng chứng](docs/manual-testing/evidence/) |
 
-### Quyết định kỹ thuật
+## 🏗️ Thiết kế
 
-- **Chống trùng lịch ở tầng DB**: constraint `EXCLUDE USING gist (room_id WITH =, tstzrange(start,end,'[)') WITH &&) WHERE status='CONFIRMED'`.
-  Kiểm tra ở service chỉ để trả lỗi thân thiện; DB là chốt chặn cuối nên an toàn khi nhiều request đồng thời và nhiều instance.
-- **Khoảng nửa mở `[start, end)`**: booking 9–10h và 10–11h không xung đột.
-- **Thời gian**: lưu `timestamptz`, truyền ISO-8601 UTC; `Clock` được inject để test được.
-- **JWT stateless + BCrypt**, phân quyền USER/ADMIN bằng `@PreAuthorize`; secret không có giá trị mặc định trong code.
-- **Flyway** quản lý schema; Hibernate chỉ validate.
-- **Hủy mềm** (status `CANCELLED`) để giữ lịch sử; hủy lặp lại là idempotent.
-- **Vận hành**: `X-Request-Id` + MDC logging, graceful shutdown, không lộ stack trace, chỉ mở health của actuator.
+```mermaid
+flowchart LR
+    C[Client] --> F[Filters<br/>RequestId · JWT]
+    F --> CT[Controller<br/>validation · authz]
+    CT --> S[Service<br/>business rules]
+    S --> R[Repository]
+    R --> DB[(PostgreSQL<br/>constraints)]
+```
 
-### Giả định
+Modular monolith, chia package theo tính năng (`auth`, `room`, `booking`, `common`).
+Chi tiết: [Yêu cầu](docs/01-requirements.md) · [Kiến trúc tổng quan](docs/02-high-level-architecture.md) ·
+[Thiết kế hệ thống](docs/03-system-design.md) · [Cấu trúc thư mục](docs/05-project-structure.md).
 
-- Một công ty / một múi giờ hiển thị phía client; API làm việc với UTC.
-- Đăng ký tự do tạo USER; chỉ ADMIN (seed từ env) quản lý phòng.
-- Không có booking định kỳ, không gửi thông báo.
+### Quyết định kỹ thuật và lý do
 
-### Giới hạn & hướng mở rộng
+| Quyết định | Lý do |
+|------------|-------|
+| Chống trùng lịch bằng `EXCLUDE USING gist` ở PostgreSQL | DB là chốt chặn cuối: an toàn khi nhiều request đồng thời và nhiều instance; kiểm tra ở service chỉ để trả lỗi thân thiện |
+| Khoảng thời gian nửa mở `[start, end)` | Booking 9–10h và 10–11h không xung đột |
+| Lưu `timestamptz`, API dùng ISO-8601 UTC | Tránh nhầm múi giờ; `Clock` được inject nên test được |
+| JWT stateless + BCrypt, `@PreAuthorize` | Dễ scale ngang; secret không có giá trị mặc định trong code |
+| Flyway quản lý schema, Hibernate chỉ validate | Schema có version, tái lập được trên mọi môi trường |
+| Hủy mềm (`CANCELLED`) | Giữ lịch sử; hủy lặp lại là idempotent |
+| `X-Request-Id`, graceful shutdown, ẩn stack trace | Truy vết và vận hành an toàn |
 
-Refresh token, booking định kỳ, thông báo email, rate limiting, OpenAPI/Swagger, metrics (Prometheus).
+Giả định: một công ty, một múi giờ hiển thị phía client; đăng ký tự do tạo `USER`, chỉ `ADMIN` (seed từ env) quản lý phòng.
 
-> Lưu ý: `docker compose up` chưa được chạy thử trên máy phát triển (không có Docker); test chạy qua PostgreSQL nhúng.
+## Giới hạn & hướng mở rộng
+
+**Hướng mở rộng**: refresh token, booking định kỳ, thông báo email, rate limiting, OpenAPI/Swagger, metrics (Prometheus).

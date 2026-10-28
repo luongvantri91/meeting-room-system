@@ -1,7 +1,7 @@
 # 01 – Phân tích yêu cầu
 
 > Tài liệu này mô tả **hệ thống cần làm gì** (what), chưa nói **làm bằng cách nào** (how).
-> Cách làm nằm ở [02-system-design.md](02-system-design.md).
+> Cách làm nằm ở [03-system-design.md](03-system-design.md).
 
 ## 1. Bối cảnh và mục tiêu
 

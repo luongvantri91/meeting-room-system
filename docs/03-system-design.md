@@ -1,7 +1,8 @@
-# 02 – Thiết kế hệ thống
+# 03 – Thiết kế hệ thống
 
 > Tài liệu này mô tả **làm bằng cách nào** để đáp ứng [01-requirements.md](01-requirements.md).
 > Mã `BRxx` là mã quy tắc nghiệp vụ trong tài liệu requirement.
+> Cái nhìn tổng thể (sơ đồ ngữ cảnh, triển khai, thành phần) nằm ở [02-high-level-architecture.md](02-high-level-architecture.md).
 
 ## 1. Kiến trúc
 

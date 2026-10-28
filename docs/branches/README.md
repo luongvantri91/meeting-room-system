@@ -18,6 +18,9 @@ Mỗi file bên dưới mô tả: mục tiêu, việc đã làm, quyết định
 | 10 | `docs/delivery-readme` | 7. Bàn giao | [10](10-delivery-readme.md) |
 | 11 | `fix/booking-view-access` | Sửa theo review | [11](11-booking-view-access.md) |
 | 12 | `feature/booking-update` | Bổ sung theo review | [12](12-booking-update.md) |
+| 13 | `test/postman-manual-testing` | 5. Kiểm thử (thủ công, Postman) | [13](13-manual-testing.md) |
+| 14 | `docs/improve-document` | 7. Bàn giao (hoàn thiện, tổng quan dự án) | [14](14-improve-document.md) |
+| – | `docs/branch-notes` | Branch chứa các ghi chú này (00–14) | [README](README.md) |
 
 ## Năm điều cần nhớ nhất khi được hỏi
 
@@ -25,4 +28,4 @@ Mỗi file bên dưới mô tả: mục tiêu, việc đã làm, quyết định
 2. **Khoảng nửa mở `[start, end)`**: booking 9–10h và 10–11h không xung đột.
 3. **Phân biệt mã lỗi**: `400` viết sai, `422` vi phạm nghiệp vụ, `409` xung đột trạng thái, `401` chưa đăng nhập, `403` thiếu quyền.
 4. **Bảo mật**: JWT stateless + BCrypt, secret bắt buộc từ biến môi trường, người đặt lấy từ token, không lộ stack trace.
-5. **Trung thực về giới hạn**: `docker compose up` chưa được chạy thử trên máy phát triển; chưa có khóa lạc quan khi hai người cùng sửa một booking; chưa có refresh token, rate limiting, booking riêng tư.
+5. **Trung thực về giới hạn**: chưa chạy thử `docker compose up` trên máy sạch (các lần chạy thủ công dùng Postgres bằng Docker + Maven); `PATCH /rooms/{id}` cho hạ `capacity` dưới số người của booking sắp tới; chưa có khóa lạc quan khi hai người cùng sửa một booking, refresh token, rate limiting, booking riêng tư.

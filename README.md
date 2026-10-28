@@ -100,9 +100,4 @@ Giả định: một công ty, một múi giờ hiển thị phía client; đăn
 
 ## Giới hạn & hướng mở rộng
 
-**Giới hạn đã biết**
-
-- `PATCH /rooms/{id}` cho phép giảm `capacity` xuống dưới số người của các booking sắp tới.
-- Docker Compose mới được kiểm chứng ở mức cấu hình; môi trường Codespaces (Docker-in-Docker) hạn chế mạng giữa các container nên các lần chạy thủ công dùng cách 2.
-
 **Hướng mở rộng**: refresh token, booking định kỳ, thông báo email, rate limiting, OpenAPI/Swagger, metrics (Prometheus).

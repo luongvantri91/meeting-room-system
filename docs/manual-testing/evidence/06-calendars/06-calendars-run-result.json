@@ -1,0 +1,651 @@
+{
+	"id": "0b166a0f-96c1-4112-84cf-cff0eb2542b9",
+	"name": "Meeting Room System - Kịch bản test thủ công",
+	"timestamp": "2026-10-28T06:46:07.393Z",
+	"collection_id": "51980745-85be447f-9c93-468d-845f-568ece8ff2b3",
+	"folder_id": "51980745-ef08eecc-f554-4f6e-a060-b34eb87607c1",
+	"environment_id": "0",
+	"totalPass": 34,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-10-28T06:46:03.419Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "16844d6b-21b7-4c61-be4b-7113f270585e",
+			"name": "[CAL-00a] Chuẩn bị: A đặt phòng G 09:00-10:00",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings",
+			"time": 342,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[CAL-00a] status = 201": true,
+				"[CAL-00a] status = CONFIRMED": true
+			},
+			"testPassFailCounts": {
+				"[CAL-00a] status = 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-00a] status = CONFIRMED": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				342
+			],
+			"allTests": [
+				{
+					"[CAL-00a] status = 201": true,
+					"[CAL-00a] status = CONFIRMED": true
+				}
+			]
+		},
+		{
+			"id": "79d427db-f0ed-4214-ae0f-7c3cabebe7e0",
+			"name": "[CAL-00b] Chuẩn bị: B đặt phòng G 11:00-12:00",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings",
+			"time": 208,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[CAL-00b] status = 201": true,
+				"[CAL-00b] status = CONFIRMED": true
+			},
+			"testPassFailCounts": {
+				"[CAL-00b] status = 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-00b] status = CONFIRMED": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				208
+			],
+			"allTests": [
+				{
+					"[CAL-00b] status = 201": true,
+					"[CAL-00b] status = CONFIRMED": true
+				}
+			]
+		},
+		{
+			"id": "edaa2ba5-3c9b-4567-a67d-93257fbba447",
+			"name": "[CAL-00c] Chuẩn bị: A đặt phòng G 13:00-14:00",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings",
+			"time": 187,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[CAL-00c] status = 201": true,
+				"[CAL-00c] status = CONFIRMED": true
+			},
+			"testPassFailCounts": {
+				"[CAL-00c] status = 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-00c] status = CONFIRMED": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				187
+			],
+			"allTests": [
+				{
+					"[CAL-00c] status = 201": true,
+					"[CAL-00c] status = CONFIRMED": true
+				}
+			]
+		},
+		{
+			"id": "b2989d88-d5ae-4fb5-9ea2-a004cc98ae90",
+			"name": "[CAL-00d] Chuẩn bị: A hủy booking 13:00-14:00",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings/17/cancel",
+			"time": 145,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[CAL-00d] status = 200": true
+			},
+			"testPassFailCounts": {
+				"[CAL-00d] status = 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				145
+			],
+			"allTests": [
+				{
+					"[CAL-00d] status = 200": true
+				}
+			]
+		},
+		{
+			"id": "0b28b09e-0156-4ebc-9da2-cb8a92047b26",
+			"name": "[CAL-01] Lịch phòng G trong ngày: chỉ booking CONFIRMED (2)",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings?roomId=6&from=2032-04-02T00:00:00Z&to=2032-04-02T23:59:59Z",
+			"time": 200,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[CAL-01] status = 200": true,
+				"[CAL-01] 2 booking, đều CONFIRMED": true,
+				"[CAL-01] sắp xếp theo giờ": true
+			},
+			"testPassFailCounts": {
+				"[CAL-01] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-01] 2 booking, đều CONFIRMED": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-01] sắp xếp theo giờ": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				200
+			],
+			"allTests": [
+				{
+					"[CAL-01] status = 200": true,
+					"[CAL-01] 2 booking, đều CONFIRMED": true,
+					"[CAL-01] sắp xếp theo giờ": true
+				}
+			]
+		},
+		{
+			"id": "8a49fd5b-d4bc-4720-b1c5-49c9d9a2177c",
+			"name": "[CAL-02] includeCancelled=true -> thêm booking đã hủy (3)",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings?roomId=6&from=2032-04-02T00:00:00Z&to=2032-04-02T23:59:59Z&includeCancelled=true",
+			"time": 145,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[CAL-02] status = 200": true,
+				"[CAL-02] 3 booking, có CANCELLED": true
+			},
+			"testPassFailCounts": {
+				"[CAL-02] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-02] 3 booking, có CANCELLED": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				145
+			],
+			"allTests": [
+				{
+					"[CAL-02] status = 200": true,
+					"[CAL-02] 3 booking, có CANCELLED": true
+				}
+			]
+		},
+		{
+			"id": "954fa9e2-6ab1-4575-8e46-3ee8a41a61a3",
+			"name": "[CAL-03] mine=true (A) -> chỉ booking của A",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings?roomId=6&from=2032-04-02T00:00:00Z&to=2032-04-02T23:59:59Z&mine=true",
+			"time": 87,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[CAL-03] status = 200": true,
+				"[CAL-03] 1 booking của A": true
+			},
+			"testPassFailCounts": {
+				"[CAL-03] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-03] 1 booking của A": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				87
+			],
+			"allTests": [
+				{
+					"[CAL-03] status = 200": true,
+					"[CAL-03] 1 booking của A": true
+				}
+			]
+		},
+		{
+			"id": "949578c8-8748-42c4-80f3-9e14734c2700",
+			"name": "[CAL-04] mine=true (B) -> chỉ booking của B",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings?roomId=6&from=2032-04-02T00:00:00Z&to=2032-04-02T23:59:59Z&mine=true",
+			"time": 59,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[CAL-04] status = 200": true,
+				"[CAL-04] 1 booking của B": true
+			},
+			"testPassFailCounts": {
+				"[CAL-04] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-04] 1 booking của B": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				59
+			],
+			"allTests": [
+				{
+					"[CAL-04] status = 200": true,
+					"[CAL-04] 1 booking của B": true
+				}
+			]
+		},
+		{
+			"id": "7253f651-df07-4c0e-9bb8-bfc4aaa230ea",
+			"name": "[CAL-05] Cửa sổ 10:00-11:00 (chỉ chạm biên) -> rỗng",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings?roomId=6&from=2032-04-02T10:00:00Z&to=2032-04-02T11:00:00Z",
+			"time": 79,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[CAL-05] status = 200": true,
+				"[CAL-05] không có booking": true
+			},
+			"testPassFailCounts": {
+				"[CAL-05] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-05] không có booking": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				79
+			],
+			"allTests": [
+				{
+					"[CAL-05] status = 200": true,
+					"[CAL-05] không có booking": true
+				}
+			]
+		},
+		{
+			"id": "9dbe8a42-bfcd-4fda-b621-281c000579df",
+			"name": "[CAL-06] Cửa sổ 09:30-11:30 -> 2 booking",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings?roomId=6&from=2032-04-02T09:30:00Z&to=2032-04-02T11:30:00Z",
+			"time": 60,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[CAL-06] status = 200": true,
+				"[CAL-06] 2 booking": true
+			},
+			"testPassFailCounts": {
+				"[CAL-06] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-06] 2 booking": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				60
+			],
+			"allTests": [
+				{
+					"[CAL-06] status = 200": true,
+					"[CAL-06] 2 booking": true
+				}
+			]
+		},
+		{
+			"id": "65bdb187-a7e0-40e3-8e7b-20845388ed86",
+			"name": "[CAL-07] Phân trang size=1 -> 1 phần tử, tổng 2",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings?roomId=6&from=2032-04-02T00:00:00Z&to=2032-04-02T23:59:59Z&size=1",
+			"time": 64,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[CAL-07] status = 200": true,
+				"[CAL-07] content=1, totalElements=2, totalPages=2": true
+			},
+			"testPassFailCounts": {
+				"[CAL-07] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-07] content=1, totalElements=2, totalPages=2": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				64
+			],
+			"allTests": [
+				{
+					"[CAL-07] status = 200": true,
+					"[CAL-07] content=1, totalElements=2, totalPages=2": true
+				}
+			]
+		},
+		{
+			"id": "d5f33f02-e11d-4a1a-bb6b-be744b429a86",
+			"name": "[CAL-08] from = to -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings?from=2032-04-02T10:00:00Z&to=2032-04-02T10:00:00Z",
+			"time": 129,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[CAL-08] status = 400": true,
+				"[CAL-08] code = INVALID_TIME_RANGE": true
+			},
+			"testPassFailCounts": {
+				"[CAL-08] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-08] code = INVALID_TIME_RANGE": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				129
+			],
+			"allTests": [
+				{
+					"[CAL-08] status = 400": true,
+					"[CAL-08] code = INVALID_TIME_RANGE": true
+				}
+			]
+		},
+		{
+			"id": "e847d4f8-bd50-4473-acf8-b9590768d0d3",
+			"name": "[CAL-09] to trước from -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings?from=2032-04-02T11:00:00Z&to=2032-04-02T10:00:00Z",
+			"time": 126,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[CAL-09] status = 400": true,
+				"[CAL-09] code = INVALID_TIME_RANGE": true
+			},
+			"testPassFailCounts": {
+				"[CAL-09] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-09] code = INVALID_TIME_RANGE": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				126
+			],
+			"allTests": [
+				{
+					"[CAL-09] status = 400": true,
+					"[CAL-09] code = INVALID_TIME_RANGE": true
+				}
+			]
+		},
+		{
+			"id": "bf6ea40e-7ad7-494e-b1ae-342f75d8ac33",
+			"name": "[CAL-10] size=101 -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings?size=101",
+			"time": 124,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[CAL-10] status = 400": true,
+				"[CAL-10] code = VALIDATION_ERROR": true
+			},
+			"testPassFailCounts": {
+				"[CAL-10] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-10] code = VALIDATION_ERROR": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				124
+			],
+			"allTests": [
+				{
+					"[CAL-10] status = 400": true,
+					"[CAL-10] code = VALIDATION_ERROR": true
+				}
+			]
+		},
+		{
+			"id": "e2f96613-e469-4832-b5f9-d8566b1b821e",
+			"name": "[CAL-11] page=-1 -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings?page=-1",
+			"time": 128,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[CAL-11] status = 400": true,
+				"[CAL-11] code = VALIDATION_ERROR": true
+			},
+			"testPassFailCounts": {
+				"[CAL-11] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-11] code = VALIDATION_ERROR": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				128
+			],
+			"allTests": [
+				{
+					"[CAL-11] status = 400": true,
+					"[CAL-11] code = VALIDATION_ERROR": true
+				}
+			]
+		},
+		{
+			"id": "6dd0b1fb-7aa3-4115-89ae-88f42e9ea4e2",
+			"name": "[CAL-12] Ngày sai định dạng -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings?from=hom-nay",
+			"time": 155,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[CAL-12] status = 400": true,
+				"[CAL-12] code = MALFORMED_REQUEST": true
+			},
+			"testPassFailCounts": {
+				"[CAL-12] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-12] code = MALFORMED_REQUEST": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				155
+			],
+			"allTests": [
+				{
+					"[CAL-12] status = 400": true,
+					"[CAL-12] code = MALFORMED_REQUEST": true
+				}
+			]
+		},
+		{
+			"id": "14300bc9-6036-4be3-87e5-14cfdc8e9c94",
+			"name": "[CAL-13] Xem lịch không có token -> 401",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings",
+			"time": 51,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"[CAL-13] status = 401": true,
+				"[CAL-13] code = UNAUTHORIZED": true
+			},
+			"testPassFailCounts": {
+				"[CAL-13] status = 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CAL-13] code = UNAUTHORIZED": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				51
+			],
+			"allTests": [
+				{
+					"[CAL-13] status = 401": true,
+					"[CAL-13] code = UNAUTHORIZED": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2289,
+	"collection": {
+		"requests": [
+			{
+				"id": "16844d6b-21b7-4c61-be4b-7113f270585e",
+				"method": "POST"
+			},
+			{
+				"id": "79d427db-f0ed-4214-ae0f-7c3cabebe7e0",
+				"method": "POST"
+			},
+			{
+				"id": "edaa2ba5-3c9b-4567-a67d-93257fbba447",
+				"method": "POST"
+			},
+			{
+				"id": "b2989d88-d5ae-4fb5-9ea2-a004cc98ae90",
+				"method": "POST"
+			},
+			{
+				"id": "0b28b09e-0156-4ebc-9da2-cb8a92047b26",
+				"method": "GET"
+			},
+			{
+				"id": "8a49fd5b-d4bc-4720-b1c5-49c9d9a2177c",
+				"method": "GET"
+			},
+			{
+				"id": "954fa9e2-6ab1-4575-8e46-3ee8a41a61a3",
+				"method": "GET"
+			},
+			{
+				"id": "949578c8-8748-42c4-80f3-9e14734c2700",
+				"method": "GET"
+			},
+			{
+				"id": "7253f651-df07-4c0e-9bb8-bfc4aaa230ea",
+				"method": "GET"
+			},
+			{
+				"id": "9dbe8a42-bfcd-4fda-b621-281c000579df",
+				"method": "GET"
+			},
+			{
+				"id": "65bdb187-a7e0-40e3-8e7b-20845388ed86",
+				"method": "GET"
+			},
+			{
+				"id": "d5f33f02-e11d-4a1a-bb6b-be744b429a86",
+				"method": "GET"
+			},
+			{
+				"id": "e847d4f8-bd50-4473-acf8-b9590768d0d3",
+				"method": "GET"
+			},
+			{
+				"id": "bf6ea40e-7ad7-494e-b1ae-342f75d8ac33",
+				"method": "GET"
+			},
+			{
+				"id": "e2f96613-e469-4832-b5f9-d8566b1b821e",
+				"method": "GET"
+			},
+			{
+				"id": "6dd0b1fb-7aa3-4115-89ae-88f42e9ea4e2",
+				"method": "GET"
+			},
+			{
+				"id": "14300bc9-6036-4be3-87e5-14cfdc8e9c94",
+				"method": "GET"
+			}
+		]
+	}
+}

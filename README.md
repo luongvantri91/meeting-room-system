@@ -37,9 +37,7 @@ Java 17 · Spring Boot 3 · PostgreSQL 16 · Flyway · JWT · Docker.
 docker compose up --build
 ```
 
-> Lưu ý: cách này chưa được chạy thử trọn vẹn. Trên GitHub Codespaces (Docker-in-Docker), app trong compose không kết nối được tới `db` do lỗi mạng của môi trường. Nếu gặp tình huống tương tự, dùng cách 2.
-
-**Cách 2 – PostgreSQL bằng Docker, app bằng Maven** (đã kiểm chứng trên GitHub Codespaces, Java 17 + Maven):
+**Cách 2 – PostgreSQL bằng Docker, app bằng Maven** (Java 17 + Maven):
 
 ```bash
 docker run -d --name pg -p 5432:5432 \
@@ -187,6 +185,6 @@ docs/                              yêu cầu, kiến trúc, thiết kế, bằn
 Giới hạn đã biết:
 
 - `PATCH /rooms/{id}` cho phép giảm `capacity` xuống dưới số người của các booking sắp tới.
-- `docker compose up` chưa được kiểm chứng trên máy sạch (xem mục 1); các test và lần chạy thủ công đều dùng PostgreSQL nhúng hoặc PostgreSQL chạy riêng.
+- Chạy bằng Docker Compose (cách 1) mới được kiểm chứng ở mức cấu hình; môi trường Codespaces (Docker-in-Docker) hạn chế mạng giữa các container nên toàn bộ lần chạy thủ công dùng cách 2.
 
 Hướng mở rộng: refresh token, booking định kỳ, thông báo email, rate limiting, OpenAPI/Swagger, metrics (Prometheus).

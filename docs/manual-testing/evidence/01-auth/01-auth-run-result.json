@@ -1,0 +1,571 @@
+{
+	"id": "c140627c-b070-4f24-8284-bc9cb72f3ac4",
+	"name": "Meeting Room System - Kịch bản test thủ công",
+	"timestamp": "2026-10-28T06:20:18.709Z",
+	"collection_id": "51980745-85be447f-9c93-468d-845f-568ece8ff2b3",
+	"folder_id": "51980745-ce41d364-5f45-4d14-b31c-c16f2caaff9a",
+	"environment_id": "0",
+	"totalPass": 29,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-10-28T06:20:14.550Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "b5e556a4-e0a8-4d8c-adc2-b7ce6630143c",
+			"name": "[AUTH-01] Admin mặc định đăng nhập thành công",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/auth/login",
+			"time": 412,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[AUTH-01] status = 200": true,
+				"[AUTH-01] có accessToken và tokenType = Bearer": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-01] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[AUTH-01] có accessToken và tokenType = Bearer": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				412
+			],
+			"allTests": [
+				{
+					"[AUTH-01] status = 200": true,
+					"[AUTH-01] có accessToken và tokenType = Bearer": true
+				}
+			]
+		},
+		{
+			"id": "6ef70cbd-f7ae-40ff-bb33-488c4b1cafd4",
+			"name": "[AUTH-02] Đăng ký user A hợp lệ -> role USER",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/auth/register",
+			"time": 284,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[AUTH-02] status = 201": true,
+				"[AUTH-02] role = USER": true,
+				"[AUTH-02] không lộ password": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-02] status = 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[AUTH-02] role = USER": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[AUTH-02] không lộ password": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				284
+			],
+			"allTests": [
+				{
+					"[AUTH-02] status = 201": true,
+					"[AUTH-02] role = USER": true,
+					"[AUTH-02] không lộ password": true
+				}
+			]
+		},
+		{
+			"id": "6743ac2d-7ae8-4d47-8ad3-455a54ba5d39",
+			"name": "[AUTH-03] Đăng ký user B hợp lệ",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/auth/register",
+			"time": 167,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[AUTH-03] status = 201": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-03] status = 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				167
+			],
+			"allTests": [
+				{
+					"[AUTH-03] status = 201": true
+				}
+			]
+		},
+		{
+			"id": "7ea829d7-b687-480d-a04d-4bd083415ddb",
+			"name": "[AUTH-04] Đăng ký trùng email (khác hoa thường) -> 409",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/auth/register",
+			"time": 162,
+			"responseCode": {
+				"code": 409,
+				"name": "Conflict"
+			},
+			"tests": {
+				"[AUTH-04] status = 409": true,
+				"[AUTH-04] code = EMAIL_ALREADY_EXISTS": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-04] status = 409": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[AUTH-04] code = EMAIL_ALREADY_EXISTS": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				162
+			],
+			"allTests": [
+				{
+					"[AUTH-04] status = 409": true,
+					"[AUTH-04] code = EMAIL_ALREADY_EXISTS": true
+				}
+			]
+		},
+		{
+			"id": "aea8b8b5-2726-4a23-af96-51d1aadd839e",
+			"name": "[AUTH-05] Đăng ký email sai định dạng -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/auth/register",
+			"time": 174,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[AUTH-05] status = 400": true,
+				"[AUTH-05] code = VALIDATION_ERROR": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-05] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[AUTH-05] code = VALIDATION_ERROR": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				174
+			],
+			"allTests": [
+				{
+					"[AUTH-05] status = 400": true,
+					"[AUTH-05] code = VALIDATION_ERROR": true
+				}
+			]
+		},
+		{
+			"id": "401dea15-6f9c-4037-a591-721cbf85fc5b",
+			"name": "[AUTH-06] Đăng ký mật khẩu 7 ký tự -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/auth/register",
+			"time": 163,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[AUTH-06] status = 400": true,
+				"[AUTH-06] code = VALIDATION_ERROR": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-06] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[AUTH-06] code = VALIDATION_ERROR": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				163
+			],
+			"allTests": [
+				{
+					"[AUTH-06] status = 400": true,
+					"[AUTH-06] code = VALIDATION_ERROR": true
+				}
+			]
+		},
+		{
+			"id": "3681c70e-ad07-488b-a8f3-c55e8c5765bb",
+			"name": "[AUTH-07] Đăng ký thiếu fullName -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/auth/register",
+			"time": 185,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[AUTH-07] status = 400": true,
+				"[AUTH-07] code = VALIDATION_ERROR": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-07] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[AUTH-07] code = VALIDATION_ERROR": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				185
+			],
+			"allTests": [
+				{
+					"[AUTH-07] status = 400": true,
+					"[AUTH-07] code = VALIDATION_ERROR": true
+				}
+			]
+		},
+		{
+			"id": "89d57566-3ad7-4214-ba78-d4caa0f4f0c9",
+			"name": "[AUTH-08] Client gửi role=ADMIN khi đăng ký -> vẫn là USER",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/auth/register",
+			"time": 176,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[AUTH-08] status = 201": true,
+				"[AUTH-08] role vẫn là USER": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-08] status = 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[AUTH-08] role vẫn là USER": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				176
+			],
+			"allTests": [
+				{
+					"[AUTH-08] status = 201": true,
+					"[AUTH-08] role vẫn là USER": true
+				}
+			]
+		},
+		{
+			"id": "e1dbacdd-7c52-4328-91cd-8110a46d43e9",
+			"name": "[AUTH-09] User A đăng nhập đúng -> 200 + token",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/auth/login",
+			"time": 257,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[AUTH-09] status = 200": true,
+				"[AUTH-09] expiresInSeconds > 0": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-09] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[AUTH-09] expiresInSeconds > 0": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				257
+			],
+			"allTests": [
+				{
+					"[AUTH-09] status = 200": true,
+					"[AUTH-09] expiresInSeconds > 0": true
+				}
+			]
+		},
+		{
+			"id": "15046f05-ed2a-4132-a61a-016009a8dbd3",
+			"name": "[AUTH-10] User B đăng nhập đúng -> 200 + token",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/auth/login",
+			"time": 186,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[AUTH-10] status = 200": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-10] status = 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				186
+			],
+			"allTests": [
+				{
+					"[AUTH-10] status = 200": true
+				}
+			]
+		},
+		{
+			"id": "8e52026b-a3f7-4f86-9fed-cac8950ed618",
+			"name": "[AUTH-11] Sai mật khẩu -> 401",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/auth/login",
+			"time": 152,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"[AUTH-11] status = 401": true,
+				"[AUTH-11] code = INVALID_CREDENTIALS": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-11] status = 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[AUTH-11] code = INVALID_CREDENTIALS": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				152
+			],
+			"allTests": [
+				{
+					"[AUTH-11] status = 401": true,
+					"[AUTH-11] code = INVALID_CREDENTIALS": true
+				}
+			]
+		},
+		{
+			"id": "440a5dd6-fb0e-4ffb-bdbb-300df313f947",
+			"name": "[AUTH-12] Email không tồn tại -> 401 (cùng lỗi với sai mật khẩu)",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/auth/login",
+			"time": 154,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"[AUTH-12] status = 401": true,
+				"[AUTH-12] code = INVALID_CREDENTIALS": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-12] status = 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[AUTH-12] code = INVALID_CREDENTIALS": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				154
+			],
+			"allTests": [
+				{
+					"[AUTH-12] status = 401": true,
+					"[AUTH-12] code = INVALID_CREDENTIALS": true
+				}
+			]
+		},
+		{
+			"id": "89007255-5fc8-423d-b2b8-cb8bd455838c",
+			"name": "[AUTH-13] Gọi API cần đăng nhập khi không có token -> 401",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 65,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"[AUTH-13] status = 401": true,
+				"[AUTH-13] code = UNAUTHORIZED": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-13] status = 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[AUTH-13] code = UNAUTHORIZED": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				65
+			],
+			"allTests": [
+				{
+					"[AUTH-13] status = 401": true,
+					"[AUTH-13] code = UNAUTHORIZED": true
+				}
+			]
+		},
+		{
+			"id": "aa08e6a2-5d03-4ba8-a263-8821e68653fd",
+			"name": "[AUTH-14] Token sai -> 401",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 77,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"[AUTH-14] status = 401": true,
+				"[AUTH-14] code = UNAUTHORIZED": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-14] status = 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[AUTH-14] code = UNAUTHORIZED": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				77
+			],
+			"allTests": [
+				{
+					"[AUTH-14] status = 401": true,
+					"[AUTH-14] code = UNAUTHORIZED": true
+				}
+			]
+		},
+		{
+			"id": "93fd7e24-2e40-45d6-ba1c-87f079e049c0",
+			"name": "[AUTH-15] Health check không cần token",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/actuator/health",
+			"time": 56,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[AUTH-15] status = 200": true,
+				"[AUTH-15] status = UP": true
+			},
+			"testPassFailCounts": {
+				"[AUTH-15] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[AUTH-15] status = UP": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				56
+			],
+			"allTests": [
+				{
+					"[AUTH-15] status = 200": true,
+					"[AUTH-15] status = UP": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2670,
+	"collection": {
+		"requests": [
+			{
+				"id": "b5e556a4-e0a8-4d8c-adc2-b7ce6630143c",
+				"method": "POST"
+			},
+			{
+				"id": "6ef70cbd-f7ae-40ff-bb33-488c4b1cafd4",
+				"method": "POST"
+			},
+			{
+				"id": "6743ac2d-7ae8-4d47-8ad3-455a54ba5d39",
+				"method": "POST"
+			},
+			{
+				"id": "7ea829d7-b687-480d-a04d-4bd083415ddb",
+				"method": "POST"
+			},
+			{
+				"id": "aea8b8b5-2726-4a23-af96-51d1aadd839e",
+				"method": "POST"
+			},
+			{
+				"id": "401dea15-6f9c-4037-a591-721cbf85fc5b",
+				"method": "POST"
+			},
+			{
+				"id": "3681c70e-ad07-488b-a8f3-c55e8c5765bb",
+				"method": "POST"
+			},
+			{
+				"id": "89d57566-3ad7-4214-ba78-d4caa0f4f0c9",
+				"method": "POST"
+			},
+			{
+				"id": "e1dbacdd-7c52-4328-91cd-8110a46d43e9",
+				"method": "POST"
+			},
+			{
+				"id": "15046f05-ed2a-4132-a61a-016009a8dbd3",
+				"method": "POST"
+			},
+			{
+				"id": "8e52026b-a3f7-4f86-9fed-cac8950ed618",
+				"method": "POST"
+			},
+			{
+				"id": "440a5dd6-fb0e-4ffb-bdbb-300df313f947",
+				"method": "POST"
+			},
+			{
+				"id": "89007255-5fc8-423d-b2b8-cb8bd455838c",
+				"method": "GET"
+			},
+			{
+				"id": "aa08e6a2-5d03-4ba8-a263-8821e68653fd",
+				"method": "GET"
+			},
+			{
+				"id": "93fd7e24-2e40-45d6-ba1c-87f079e049c0",
+				"method": "GET"
+			}
+		]
+	}
+}

@@ -1,0 +1,355 @@
+{
+	"id": "0e9f0c2c-1fd8-42bc-9c9a-2f46441da101",
+	"name": "Meeting Room System - Kịch bản test thủ công",
+	"timestamp": "2026-10-28T06:38:41.314Z",
+	"collection_id": "51980745-85be447f-9c93-468d-845f-568ece8ff2b3",
+	"folder_id": "51980745-23dfc66a-2924-4657-85e9-9efab3d77ba8",
+	"environment_id": "0",
+	"totalPass": 18,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-10-28T06:38:38.937Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "3d09ce82-e10f-46e3-afa9-bf57ef3dd95f",
+			"name": "[VIEW-01] B xem booking của A -> 200 (ai cũng xem được)",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings/1",
+			"time": 359,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[VIEW-01] status = 200": true,
+				"[VIEW-01] userId là A, có title": true
+			},
+			"testPassFailCounts": {
+				"[VIEW-01] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[VIEW-01] userId là A, có title": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				359
+			],
+			"allTests": [
+				{
+					"[VIEW-01] status = 200": true,
+					"[VIEW-01] userId là A, có title": true
+				}
+			]
+		},
+		{
+			"id": "39b248df-c428-43c2-a41e-687345da33d0",
+			"name": "[VIEW-02] Xem booking không tồn tại -> 404",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings/999999999",
+			"time": 128,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"[VIEW-02] status = 404": true,
+				"[VIEW-02] code = BOOKING_NOT_FOUND": true
+			},
+			"testPassFailCounts": {
+				"[VIEW-02] status = 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[VIEW-02] code = BOOKING_NOT_FOUND": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				128
+			],
+			"allTests": [
+				{
+					"[VIEW-02] status = 404": true,
+					"[VIEW-02] code = BOOKING_NOT_FOUND": true
+				}
+			]
+		},
+		{
+			"id": "d01ff037-93c2-460b-a15a-189ca1e38914",
+			"name": "[VIEW-03] Xem booking không có token -> 401",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings/1",
+			"time": 124,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"[VIEW-03] status = 401": true,
+				"[VIEW-03] code = UNAUTHORIZED": true
+			},
+			"testPassFailCounts": {
+				"[VIEW-03] status = 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[VIEW-03] code = UNAUTHORIZED": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				124
+			],
+			"allTests": [
+				{
+					"[VIEW-03] status = 401": true,
+					"[VIEW-03] code = UNAUTHORIZED": true
+				}
+			]
+		},
+		{
+			"id": "f4fa809d-dcec-4993-8b38-f0178c2e65aa",
+			"name": "[CANCEL-01] B hủy booking của A -> 403",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings/1/cancel",
+			"time": 131,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"[CANCEL-01] status = 403": true,
+				"[CANCEL-01] code = FORBIDDEN": true
+			},
+			"testPassFailCounts": {
+				"[CANCEL-01] status = 403": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CANCEL-01] code = FORBIDDEN": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				131
+			],
+			"allTests": [
+				{
+					"[CANCEL-01] status = 403": true,
+					"[CANCEL-01] code = FORBIDDEN": true
+				}
+			]
+		},
+		{
+			"id": "6c258bc1-6247-4eaa-8b6e-23284dd97806",
+			"name": "[CANCEL-02] Hủy không có token -> 401",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings/1/cancel",
+			"time": 141,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"[CANCEL-02] status = 401": true,
+				"[CANCEL-02] code = UNAUTHORIZED": true
+			},
+			"testPassFailCounts": {
+				"[CANCEL-02] status = 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CANCEL-02] code = UNAUTHORIZED": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				141
+			],
+			"allTests": [
+				{
+					"[CANCEL-02] status = 401": true,
+					"[CANCEL-02] code = UNAUTHORIZED": true
+				}
+			]
+		},
+		{
+			"id": "829fd571-2210-4dc3-9a6e-bf1d96add35a",
+			"name": "[CANCEL-03] B hủy booking 10:00-11:00 của chính mình -> 200",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings/2/cancel",
+			"time": 147,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[CANCEL-03] status = 200": true,
+				"[CANCEL-03] CANCELLED và có cancelledAt": true
+			},
+			"testPassFailCounts": {
+				"[CANCEL-03] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CANCEL-03] CANCELLED và có cancelledAt": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				147
+			],
+			"allTests": [
+				{
+					"[CANCEL-03] status = 200": true,
+					"[CANCEL-03] CANCELLED và có cancelledAt": true
+				}
+			]
+		},
+		{
+			"id": "1602f5a0-8293-4c9f-b62a-bc4fa95ed0dd",
+			"name": "[CANCEL-04] Hủy lần hai (đã hủy) -> 200, vẫn CANCELLED",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings/2/cancel",
+			"time": 142,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[CANCEL-04] status = 200": true,
+				"[CANCEL-04] vẫn CANCELLED": true
+			},
+			"testPassFailCounts": {
+				"[CANCEL-04] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CANCEL-04] vẫn CANCELLED": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				142
+			],
+			"allTests": [
+				{
+					"[CANCEL-04] status = 200": true,
+					"[CANCEL-04] vẫn CANCELLED": true
+				}
+			]
+		},
+		{
+			"id": "cefe2e30-9938-4d98-8769-3842d5617e96",
+			"name": "[CANCEL-05] ADMIN hủy booking của B -> 200",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings/9/cancel",
+			"time": 57,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[CANCEL-05] status = 200": true,
+				"[CANCEL-05] CANCELLED": true
+			},
+			"testPassFailCounts": {
+				"[CANCEL-05] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CANCEL-05] CANCELLED": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				57
+			],
+			"allTests": [
+				{
+					"[CANCEL-05] status = 200": true,
+					"[CANCEL-05] CANCELLED": true
+				}
+			]
+		},
+		{
+			"id": "f5c56269-23d9-4a79-8eb3-4d6a7aa73a4d",
+			"name": "[CANCEL-06] Hủy booking không tồn tại -> 404",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings/999999999/cancel",
+			"time": 141,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"[CANCEL-06] status = 404": true,
+				"[CANCEL-06] code = BOOKING_NOT_FOUND": true
+			},
+			"testPassFailCounts": {
+				"[CANCEL-06] status = 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[CANCEL-06] code = BOOKING_NOT_FOUND": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				141
+			],
+			"allTests": [
+				{
+					"[CANCEL-06] status = 404": true,
+					"[CANCEL-06] code = BOOKING_NOT_FOUND": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1370,
+	"collection": {
+		"requests": [
+			{
+				"id": "3d09ce82-e10f-46e3-afa9-bf57ef3dd95f",
+				"method": "GET"
+			},
+			{
+				"id": "39b248df-c428-43c2-a41e-687345da33d0",
+				"method": "GET"
+			},
+			{
+				"id": "d01ff037-93c2-460b-a15a-189ca1e38914",
+				"method": "GET"
+			},
+			{
+				"id": "f4fa809d-dcec-4993-8b38-f0178c2e65aa",
+				"method": "POST"
+			},
+			{
+				"id": "6c258bc1-6247-4eaa-8b6e-23284dd97806",
+				"method": "POST"
+			},
+			{
+				"id": "829fd571-2210-4dc3-9a6e-bf1d96add35a",
+				"method": "POST"
+			},
+			{
+				"id": "1602f5a0-8293-4c9f-b62a-bc4fa95ed0dd",
+				"method": "POST"
+			},
+			{
+				"id": "cefe2e30-9938-4d98-8769-3842d5617e96",
+				"method": "POST"
+			},
+			{
+				"id": "f5c56269-23d9-4a79-8eb3-4d6a7aa73a4d",
+				"method": "POST"
+			}
+		]
+	}
+}

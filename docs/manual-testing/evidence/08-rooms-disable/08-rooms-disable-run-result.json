@@ -1,0 +1,275 @@
+{
+	"id": "dcb75af4-538d-4d22-acf4-c08db2cc461e",
+	"name": "Meeting Room System - Kịch bản test thủ công",
+	"timestamp": "2026-10-28T06:49:57.906Z",
+	"collection_id": "51980745-85be447f-9c93-468d-845f-568ece8ff2b3",
+	"folder_id": "51980745-81ed88f2-f6fc-4a67-92eb-80ee9581d6e2",
+	"environment_id": "0",
+	"totalPass": 13,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-10-28T06:49:55.855Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "a1a1c57c-f048-4b98-a2af-485866ad9dfb",
+			"name": "[DEACT-01] Chuẩn bị: A đặt phòng H 09:00-10:00",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings",
+			"time": 311,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[DEACT-01] status = 201": true,
+				"[DEACT-01] status = CONFIRMED": true
+			},
+			"testPassFailCounts": {
+				"[DEACT-01] status = 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[DEACT-01] status = CONFIRMED": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				311
+			],
+			"allTests": [
+				{
+					"[DEACT-01] status = 201": true,
+					"[DEACT-01] status = CONFIRMED": true
+				}
+			]
+		},
+		{
+			"id": "e85fe53b-75dc-4465-90c8-85081c7fac76",
+			"name": "[DEACT-02] ADMIN vô hiệu hóa phòng H khi còn booking sắp tới -> 409",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms/7",
+			"time": 152,
+			"responseCode": {
+				"code": 409,
+				"name": "Conflict"
+			},
+			"tests": {
+				"[DEACT-02] status = 409": true,
+				"[DEACT-02] code = ROOM_HAS_UPCOMING_BOOKINGS": true
+			},
+			"testPassFailCounts": {
+				"[DEACT-02] status = 409": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[DEACT-02] code = ROOM_HAS_UPCOMING_BOOKINGS": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				152
+			],
+			"allTests": [
+				{
+					"[DEACT-02] status = 409": true,
+					"[DEACT-02] code = ROOM_HAS_UPCOMING_BOOKINGS": true
+				}
+			]
+		},
+		{
+			"id": "70d28eab-dad1-4268-a922-3e22a74bef68",
+			"name": "[DEACT-03] A hủy booking",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings/18/cancel",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[DEACT-03] status = 200": true
+			},
+			"testPassFailCounts": {
+				"[DEACT-03] status = 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				106
+			],
+			"allTests": [
+				{
+					"[DEACT-03] status = 200": true
+				}
+			]
+		},
+		{
+			"id": "8de6dca9-3fb8-4217-928f-c62eef896356",
+			"name": "[DEACT-04] Vô hiệu hóa phòng H sau khi hủy -> 200",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms/7",
+			"time": 149,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[DEACT-04] status = 200": true,
+				"[DEACT-04] active = false": true
+			},
+			"testPassFailCounts": {
+				"[DEACT-04] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[DEACT-04] active = false": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				149
+			],
+			"allTests": [
+				{
+					"[DEACT-04] status = 200": true,
+					"[DEACT-04] active = false": true
+				}
+			]
+		},
+		{
+			"id": "a38fce67-665c-40dd-be55-e32984b56dd8",
+			"name": "[DEACT-05] Đặt phòng H đã vô hiệu hóa -> 422",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings",
+			"time": 165,
+			"responseCode": {
+				"code": 422,
+				"name": "Unprocessable Entity (WebDAV) (RFC 4918)"
+			},
+			"tests": {
+				"[DEACT-05] status = 422": true,
+				"[DEACT-05] code = ROOM_INACTIVE": true
+			},
+			"testPassFailCounts": {
+				"[DEACT-05] status = 422": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[DEACT-05] code = ROOM_INACTIVE": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				165
+			],
+			"allTests": [
+				{
+					"[DEACT-05] status = 422": true,
+					"[DEACT-05] code = ROOM_INACTIVE": true
+				}
+			]
+		},
+		{
+			"id": "c1a8ac95-b086-4744-a117-c05d321bdec1",
+			"name": "[DEACT-06] Kích hoạt lại phòng H -> 200",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms/7",
+			"time": 155,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[DEACT-06] status = 200": true,
+				"[DEACT-06] active = true": true
+			},
+			"testPassFailCounts": {
+				"[DEACT-06] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[DEACT-06] active = true": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				155
+			],
+			"allTests": [
+				{
+					"[DEACT-06] status = 200": true,
+					"[DEACT-06] active = true": true
+				}
+			]
+		},
+		{
+			"id": "0bf38292-26c4-4767-bc61-342b6b5b1286",
+			"name": "[DEACT-07] Đặt phòng H lại -> 201",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/bookings",
+			"time": 88,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[DEACT-07] status = 201": true,
+				"[DEACT-07] status = CONFIRMED": true
+			},
+			"testPassFailCounts": {
+				"[DEACT-07] status = 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[DEACT-07] status = CONFIRMED": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				88
+			],
+			"allTests": [
+				{
+					"[DEACT-07] status = 201": true,
+					"[DEACT-07] status = CONFIRMED": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1126,
+	"collection": {
+		"requests": [
+			{
+				"id": "a1a1c57c-f048-4b98-a2af-485866ad9dfb",
+				"method": "POST"
+			},
+			{
+				"id": "e85fe53b-75dc-4465-90c8-85081c7fac76",
+				"method": "PATCH"
+			},
+			{
+				"id": "70d28eab-dad1-4268-a922-3e22a74bef68",
+				"method": "POST"
+			},
+			{
+				"id": "8de6dca9-3fb8-4217-928f-c62eef896356",
+				"method": "PATCH"
+			},
+			{
+				"id": "a38fce67-665c-40dd-be55-e32984b56dd8",
+				"method": "POST"
+			},
+			{
+				"id": "c1a8ac95-b086-4744-a117-c05d321bdec1",
+				"method": "PATCH"
+			},
+			{
+				"id": "0bf38292-26c4-4767-bc61-342b6b5b1286",
+				"method": "POST"
+			}
+		]
+	}
+}

@@ -1,0 +1,1132 @@
+{
+	"id": "7607c695-5a87-49d9-b3b0-2caebfcb19c7",
+	"name": "Meeting Room System - Kịch bản test thủ công",
+	"timestamp": "2026-10-28T06:27:08.558Z",
+	"collection_id": "51980745-85be447f-9c93-468d-845f-568ece8ff2b3",
+	"folder_id": "51980745-623265e7-e01c-46ee-8b75-8a58c3e57878",
+	"environment_id": "0",
+	"totalPass": 60,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-10-28T06:27:02.688Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "6bb27af6-d301-4419-9713-2503b86065e1",
+			"name": "[ROOM-01] ADMIN tạo phòng A (sức chứa 10)",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 427,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[ROOM-01] status = 201": true,
+				"[ROOM-01] capacity = 10 và active = true": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-01] status = 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-01] capacity = 10 và active = true": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				427
+			],
+			"allTests": [
+				{
+					"[ROOM-01] status = 201": true,
+					"[ROOM-01] capacity = 10 và active = true": true
+				}
+			]
+		},
+		{
+			"id": "c88fe936-8683-471e-8e70-ea869912239e",
+			"name": "[ROOM-02] ADMIN tạo phòng B (sức chứa 5)",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 152,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[ROOM-02] status = 201": true,
+				"[ROOM-02] capacity = 5 và active = true": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-02] status = 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-02] capacity = 5 và active = true": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				152
+			],
+			"allTests": [
+				{
+					"[ROOM-02] status = 201": true,
+					"[ROOM-02] capacity = 5 và active = true": true
+				}
+			]
+		},
+		{
+			"id": "731b22af-e5be-4541-85e2-513692a190b5",
+			"name": "[ROOM-03] ADMIN tạo phòng C (sức chứa 20)",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 147,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[ROOM-03] status = 201": true,
+				"[ROOM-03] capacity = 20 và active = true": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-03] status = 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-03] capacity = 20 và active = true": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				147
+			],
+			"allTests": [
+				{
+					"[ROOM-03] status = 201": true,
+					"[ROOM-03] capacity = 20 và active = true": true
+				}
+			]
+		},
+		{
+			"id": "689635ee-4b80-4d71-83f2-bc5a7e02b937",
+			"name": "[ROOM-04] ADMIN tạo phòng D (sẽ bị vô hiệu hóa)",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 157,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[ROOM-04] status = 201": true,
+				"[ROOM-04] capacity = 10 và active = true": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-04] status = 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-04] capacity = 10 và active = true": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				157
+			],
+			"allTests": [
+				{
+					"[ROOM-04] status = 201": true,
+					"[ROOM-04] capacity = 10 và active = true": true
+				}
+			]
+		},
+		{
+			"id": "11610afe-dd50-48ce-ba12-835523c8b42b",
+			"name": "[ROOM-05] ADMIN tạo phòng F (dùng cho test sửa booking)",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 162,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[ROOM-05] status = 201": true,
+				"[ROOM-05] capacity = 10 và active = true": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-05] status = 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-05] capacity = 10 và active = true": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				162
+			],
+			"allTests": [
+				{
+					"[ROOM-05] status = 201": true,
+					"[ROOM-05] capacity = 10 và active = true": true
+				}
+			]
+		},
+		{
+			"id": "041ec9e7-c72f-438b-be3d-2247dc09471f",
+			"name": "[ROOM-06] ADMIN tạo phòng G (dùng cho test lịch / phòng trống)",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 203,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[ROOM-06] status = 201": true,
+				"[ROOM-06] capacity = 10 và active = true": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-06] status = 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-06] capacity = 10 và active = true": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				203
+			],
+			"allTests": [
+				{
+					"[ROOM-06] status = 201": true,
+					"[ROOM-06] capacity = 10 và active = true": true
+				}
+			]
+		},
+		{
+			"id": "2d72a852-22b6-42a1-948f-c64791ccee4c",
+			"name": "[ROOM-07] ADMIN tạo phòng H (dùng cho test vô hiệu hóa)",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 146,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"[ROOM-07] status = 201": true,
+				"[ROOM-07] capacity = 10 và active = true": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-07] status = 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-07] capacity = 10 và active = true": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				146
+			],
+			"allTests": [
+				{
+					"[ROOM-07] status = 201": true,
+					"[ROOM-07] capacity = 10 và active = true": true
+				}
+			]
+		},
+		{
+			"id": "791d9ce3-885c-4727-a6c5-596805dbb98e",
+			"name": "[ROOM-08] Tạo phòng trùng tên -> 409",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 151,
+			"responseCode": {
+				"code": 409,
+				"name": "Conflict"
+			},
+			"tests": {
+				"[ROOM-08] status = 409": true,
+				"[ROOM-08] code = ROOM_NAME_ALREADY_EXISTS": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-08] status = 409": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-08] code = ROOM_NAME_ALREADY_EXISTS": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				151
+			],
+			"allTests": [
+				{
+					"[ROOM-08] status = 409": true,
+					"[ROOM-08] code = ROOM_NAME_ALREADY_EXISTS": true
+				}
+			]
+		},
+		{
+			"id": "34be4eed-a1a5-4f87-b78d-983d0a21b5c9",
+			"name": "[ROOM-09] Tạo phòng trùng tên khác hoa thường -> 409",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 142,
+			"responseCode": {
+				"code": 409,
+				"name": "Conflict"
+			},
+			"tests": {
+				"[ROOM-09] status = 409": true,
+				"[ROOM-09] code = ROOM_NAME_ALREADY_EXISTS": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-09] status = 409": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-09] code = ROOM_NAME_ALREADY_EXISTS": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				142
+			],
+			"allTests": [
+				{
+					"[ROOM-09] status = 409": true,
+					"[ROOM-09] code = ROOM_NAME_ALREADY_EXISTS": true
+				}
+			]
+		},
+		{
+			"id": "777f6b23-8294-4281-b155-7385f20cf6c8",
+			"name": "[ROOM-10] USER tạo phòng -> 403",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 145,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"[ROOM-10] status = 403": true,
+				"[ROOM-10] code = FORBIDDEN": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-10] status = 403": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-10] code = FORBIDDEN": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				145
+			],
+			"allTests": [
+				{
+					"[ROOM-10] status = 403": true,
+					"[ROOM-10] code = FORBIDDEN": true
+				}
+			]
+		},
+		{
+			"id": "f2834e4a-3b2f-4a23-be12-9c1937056075",
+			"name": "[ROOM-11] Tạo phòng sức chứa 0 -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 141,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[ROOM-11] status = 400": true,
+				"[ROOM-11] code = VALIDATION_ERROR": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-11] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-11] code = VALIDATION_ERROR": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				141
+			],
+			"allTests": [
+				{
+					"[ROOM-11] status = 400": true,
+					"[ROOM-11] code = VALIDATION_ERROR": true
+				}
+			]
+		},
+		{
+			"id": "4f3758c4-878a-452b-882b-a8d601b852ce",
+			"name": "[ROOM-12] Tạo phòng sức chứa âm -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 149,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[ROOM-12] status = 400": true,
+				"[ROOM-12] code = VALIDATION_ERROR": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-12] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-12] code = VALIDATION_ERROR": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				149
+			],
+			"allTests": [
+				{
+					"[ROOM-12] status = 400": true,
+					"[ROOM-12] code = VALIDATION_ERROR": true
+				}
+			]
+		},
+		{
+			"id": "18eb8abe-74b9-4168-b2fa-846daa926640",
+			"name": "[ROOM-13] Tạo phòng tên rỗng -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 53,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[ROOM-13] status = 400": true,
+				"[ROOM-13] code = VALIDATION_ERROR": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-13] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-13] code = VALIDATION_ERROR": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				53
+			],
+			"allTests": [
+				{
+					"[ROOM-13] status = 400": true,
+					"[ROOM-13] code = VALIDATION_ERROR": true
+				}
+			]
+		},
+		{
+			"id": "5ebc2c31-7512-427c-b773-916e2aa85cbe",
+			"name": "[ROOM-14] Tạo phòng không có token -> 401",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 49,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"[ROOM-14] status = 401": true,
+				"[ROOM-14] code = UNAUTHORIZED": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-14] status = 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-14] code = UNAUTHORIZED": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				49
+			],
+			"allTests": [
+				{
+					"[ROOM-14] status = 401": true,
+					"[ROOM-14] code = UNAUTHORIZED": true
+				}
+			]
+		},
+		{
+			"id": "148821d9-9ab7-4a43-8ef2-33c49ac39aab",
+			"name": "[ROOM-15] USER xem danh sách phòng (có phân trang)",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms",
+			"time": 95,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[ROOM-15] status = 200": true,
+				"[ROOM-15] có content/page/size/totalElements": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-15] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-15] có content/page/size/totalElements": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				95
+			],
+			"allTests": [
+				{
+					"[ROOM-15] status = 200": true,
+					"[ROOM-15] có content/page/size/totalElements": true
+				}
+			]
+		},
+		{
+			"id": "16298043-9818-4bf8-8133-b66ec34bddff",
+			"name": "[ROOM-16] Lọc active=true",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms?active=true&size=100",
+			"time": 59,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[ROOM-16] status = 200": true,
+				"[ROOM-16] mọi phòng đều active": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-16] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-16] mọi phòng đều active": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				59
+			],
+			"allTests": [
+				{
+					"[ROOM-16] status = 200": true,
+					"[ROOM-16] mọi phòng đều active": true
+				}
+			]
+		},
+		{
+			"id": "fbba379e-b7c6-4de7-8776-186a756f1316",
+			"name": "[ROOM-17] Lọc minCapacity=20",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms?minCapacity=20",
+			"time": 55,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[ROOM-17] status = 200": true,
+				"[ROOM-17] mọi phòng có sức chứa >= 20": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-17] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-17] mọi phòng có sức chứa >= 20": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				55
+			],
+			"allTests": [
+				{
+					"[ROOM-17] status = 200": true,
+					"[ROOM-17] mọi phòng có sức chứa >= 20": true
+				}
+			]
+		},
+		{
+			"id": "494261e9-2889-4bac-84f4-b4c3762370ba",
+			"name": "[ROOM-18] Phân trang size=101 -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms?size=101",
+			"time": 58,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[ROOM-18] status = 400": true,
+				"[ROOM-18] code = VALIDATION_ERROR": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-18] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-18] code = VALIDATION_ERROR": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				58
+			],
+			"allTests": [
+				{
+					"[ROOM-18] status = 400": true,
+					"[ROOM-18] code = VALIDATION_ERROR": true
+				}
+			]
+		},
+		{
+			"id": "bce1200f-457b-4255-aab6-bfbada9d7199",
+			"name": "[ROOM-19] Xem chi tiết phòng A",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms/1",
+			"time": 81,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[ROOM-19] status = 200": true,
+				"[ROOM-19] id khớp": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-19] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-19] id khớp": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				81
+			],
+			"allTests": [
+				{
+					"[ROOM-19] status = 200": true,
+					"[ROOM-19] id khớp": true
+				}
+			]
+		},
+		{
+			"id": "26dd8168-acab-45da-a0a8-47d28e61190a",
+			"name": "[ROOM-20] Xem phòng không tồn tại -> 404",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms/999999999",
+			"time": 65,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"[ROOM-20] status = 404": true,
+				"[ROOM-20] code = ROOM_NOT_FOUND": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-20] status = 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-20] code = ROOM_NOT_FOUND": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				65
+			],
+			"allTests": [
+				{
+					"[ROOM-20] status = 404": true,
+					"[ROOM-20] code = ROOM_NOT_FOUND": true
+				}
+			]
+		},
+		{
+			"id": "384b392f-25dd-4416-854f-f82dea884338",
+			"name": "[ROOM-21] Id không phải số -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms/abc",
+			"time": 54,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[ROOM-21] status = 400": true,
+				"[ROOM-21] code = MALFORMED_REQUEST": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-21] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-21] code = MALFORMED_REQUEST": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				54
+			],
+			"allTests": [
+				{
+					"[ROOM-21] status = 400": true,
+					"[ROOM-21] code = MALFORMED_REQUEST": true
+				}
+			]
+		},
+		{
+			"id": "1d8f1b62-4c20-4dcb-93a4-abd197ec2d70",
+			"name": "[ROOM-22] USER sửa phòng -> 403",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms/1",
+			"time": 70,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"[ROOM-22] status = 403": true,
+				"[ROOM-22] code = FORBIDDEN": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-22] status = 403": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-22] code = FORBIDDEN": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				70
+			],
+			"allTests": [
+				{
+					"[ROOM-22] status = 403": true,
+					"[ROOM-22] code = FORBIDDEN": true
+				}
+			]
+		},
+		{
+			"id": "f90fa70b-e690-49d2-8b83-d95803182607",
+			"name": "[ROOM-23] ADMIN sửa location (các trường khác giữ nguyên)",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms/1",
+			"time": 68,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[ROOM-23] status = 200": true,
+				"[ROOM-23] location đổi, capacity giữ nguyên": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-23] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-23] location đổi, capacity giữ nguyên": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				68
+			],
+			"allTests": [
+				{
+					"[ROOM-23] status = 200": true,
+					"[ROOM-23] location đổi, capacity giữ nguyên": true
+				}
+			]
+		},
+		{
+			"id": "85f88fd3-7ab2-44ec-ad96-9f767444a5bd",
+			"name": "[ROOM-24] ADMIN đổi tên phòng B",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms/2",
+			"time": 71,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[ROOM-24] status = 200": true,
+				"[ROOM-24] tên mới": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-24] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-24] tên mới": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				71
+			],
+			"allTests": [
+				{
+					"[ROOM-24] status = 200": true,
+					"[ROOM-24] tên mới": true
+				}
+			]
+		},
+		{
+			"id": "7a894c7b-0503-421f-9bce-e862e5b3fcb7",
+			"name": "[ROOM-25] Đổi tên thành tên phòng khác đã có -> 409",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms/2",
+			"time": 59,
+			"responseCode": {
+				"code": 409,
+				"name": "Conflict"
+			},
+			"tests": {
+				"[ROOM-25] status = 409": true,
+				"[ROOM-25] code = ROOM_NAME_ALREADY_EXISTS": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-25] status = 409": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-25] code = ROOM_NAME_ALREADY_EXISTS": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				59
+			],
+			"allTests": [
+				{
+					"[ROOM-25] status = 409": true,
+					"[ROOM-25] code = ROOM_NAME_ALREADY_EXISTS": true
+				}
+			]
+		},
+		{
+			"id": "9b120f06-dd97-48c4-b398-2f805a1eec8f",
+			"name": "[ROOM-26] Đổi tên toàn khoảng trắng -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms/2",
+			"time": 56,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[ROOM-26] status = 400": true,
+				"[ROOM-26] code = VALIDATION_ERROR": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-26] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-26] code = VALIDATION_ERROR": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				56
+			],
+			"allTests": [
+				{
+					"[ROOM-26] status = 400": true,
+					"[ROOM-26] code = VALIDATION_ERROR": true
+				}
+			]
+		},
+		{
+			"id": "58f2e9d7-f902-463e-83a6-938f6d41e7e0",
+			"name": "[ROOM-27] Đổi sức chứa = 0 -> 400",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms/2",
+			"time": 88,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[ROOM-27] status = 400": true,
+				"[ROOM-27] code = VALIDATION_ERROR": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-27] status = 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-27] code = VALIDATION_ERROR": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				88
+			],
+			"allTests": [
+				{
+					"[ROOM-27] status = 400": true,
+					"[ROOM-27] code = VALIDATION_ERROR": true
+				}
+			]
+		},
+		{
+			"id": "9e920ff0-c453-4c4b-b93b-b41b0a25f4fd",
+			"name": "[ROOM-28] Sửa phòng không tồn tại -> 404",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms/999999999",
+			"time": 54,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"[ROOM-28] status = 404": true,
+				"[ROOM-28] code = ROOM_NOT_FOUND": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-28] status = 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-28] code = ROOM_NOT_FOUND": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				54
+			],
+			"allTests": [
+				{
+					"[ROOM-28] status = 404": true,
+					"[ROOM-28] code = ROOM_NOT_FOUND": true
+				}
+			]
+		},
+		{
+			"id": "dec00f94-eb7a-4e47-b7d3-62536248f3fe",
+			"name": "[ROOM-29] ADMIN vô hiệu hóa phòng D (chưa có booking) -> 200",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms/4",
+			"time": 92,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[ROOM-29] status = 200": true,
+				"[ROOM-29] active = false": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-29] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-29] active = false": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				92
+			],
+			"allTests": [
+				{
+					"[ROOM-29] status = 200": true,
+					"[ROOM-29] active = false": true
+				}
+			]
+		},
+		{
+			"id": "ead9aa30-4475-4b24-9697-38ffbdba65e6",
+			"name": "[ROOM-30] Danh sách active=false chỉ gồm phòng vô hiệu hóa",
+			"url": "https://repulsive-spell-4qj95x5gjpqcj4j5-8080.app.github.dev/api/v1/rooms?active=false&size=100",
+			"time": 56,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[ROOM-30] status = 200": true,
+				"[ROOM-30] mọi phòng đều inactive": true
+			},
+			"testPassFailCounts": {
+				"[ROOM-30] status = 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[ROOM-30] mọi phòng đều inactive": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				56
+			],
+			"allTests": [
+				{
+					"[ROOM-30] status = 200": true,
+					"[ROOM-30] mọi phòng đều inactive": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 3305,
+	"collection": {
+		"requests": [
+			{
+				"id": "6bb27af6-d301-4419-9713-2503b86065e1",
+				"method": "POST"
+			},
+			{
+				"id": "c88fe936-8683-471e-8e70-ea869912239e",
+				"method": "POST"
+			},
+			{
+				"id": "731b22af-e5be-4541-85e2-513692a190b5",
+				"method": "POST"
+			},
+			{
+				"id": "689635ee-4b80-4d71-83f2-bc5a7e02b937",
+				"method": "POST"
+			},
+			{
+				"id": "11610afe-dd50-48ce-ba12-835523c8b42b",
+				"method": "POST"
+			},
+			{
+				"id": "041ec9e7-c72f-438b-be3d-2247dc09471f",
+				"method": "POST"
+			},
+			{
+				"id": "2d72a852-22b6-42a1-948f-c64791ccee4c",
+				"method": "POST"
+			},
+			{
+				"id": "791d9ce3-885c-4727-a6c5-596805dbb98e",
+				"method": "POST"
+			},
+			{
+				"id": "34be4eed-a1a5-4f87-b78d-983d0a21b5c9",
+				"method": "POST"
+			},
+			{
+				"id": "777f6b23-8294-4281-b155-7385f20cf6c8",
+				"method": "POST"
+			},
+			{
+				"id": "f2834e4a-3b2f-4a23-be12-9c1937056075",
+				"method": "POST"
+			},
+			{
+				"id": "4f3758c4-878a-452b-882b-a8d601b852ce",
+				"method": "POST"
+			},
+			{
+				"id": "18eb8abe-74b9-4168-b2fa-846daa926640",
+				"method": "POST"
+			},
+			{
+				"id": "5ebc2c31-7512-427c-b773-916e2aa85cbe",
+				"method": "POST"
+			},
+			{
+				"id": "148821d9-9ab7-4a43-8ef2-33c49ac39aab",
+				"method": "GET"
+			},
+			{
+				"id": "16298043-9818-4bf8-8133-b66ec34bddff",
+				"method": "GET"
+			},
+			{
+				"id": "fbba379e-b7c6-4de7-8776-186a756f1316",
+				"method": "GET"
+			},
+			{
+				"id": "494261e9-2889-4bac-84f4-b4c3762370ba",
+				"method": "GET"
+			},
+			{
+				"id": "bce1200f-457b-4255-aab6-bfbada9d7199",
+				"method": "GET"
+			},
+			{
+				"id": "26dd8168-acab-45da-a0a8-47d28e61190a",
+				"method": "GET"
+			},
+			{
+				"id": "384b392f-25dd-4416-854f-f82dea884338",
+				"method": "GET"
+			},
+			{
+				"id": "1d8f1b62-4c20-4dcb-93a4-abd197ec2d70",
+				"method": "PATCH"
+			},
+			{
+				"id": "f90fa70b-e690-49d2-8b83-d95803182607",
+				"method": "PATCH"
+			},
+			{
+				"id": "85f88fd3-7ab2-44ec-ad96-9f767444a5bd",
+				"method": "PATCH"
+			},
+			{
+				"id": "7a894c7b-0503-421f-9bce-e862e5b3fcb7",
+				"method": "PATCH"
+			},
+			{
+				"id": "9b120f06-dd97-48c4-b398-2f805a1eec8f",
+				"method": "PATCH"
+			},
+			{
+				"id": "58f2e9d7-f902-463e-83a6-938f6d41e7e0",
+				"method": "PATCH"
+			},
+			{
+				"id": "9e920ff0-c453-4c4b-b93b-b41b0a25f4fd",
+				"method": "PATCH"
+			},
+			{
+				"id": "dec00f94-eb7a-4e47-b7d3-62536248f3fe",
+				"method": "PATCH"
+			},
+			{
+				"id": "ead9aa30-4475-4b24-9697-38ffbdba65e6",
+				"method": "GET"
+			}
+		]
+	}
+}

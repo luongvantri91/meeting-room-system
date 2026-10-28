@@ -1,6 +1,6 @@
 # Branch 2 – `docs/system-design`
 
-**Giai đoạn:** 2 – Thiết kế hệ thống · **Sản phẩm:** [02-system-design.md](../02-system-design.md)
+**Giai đoạn:** 2 – Thiết kế hệ thống · **Sản phẩm:** [03-system-design.md](../03-system-design.md)
 
 ## Mục tiêu
 

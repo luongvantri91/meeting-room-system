@@ -9,8 +9,9 @@ Repo: `luongvantri91/meeting-room-system`. Đọc theo thứ tự:
 
 1. [README.md](../../README.md): cách chạy, API, quyết định kỹ thuật.
 2. [docs/01-requirements.md](../01-requirements.md): quy tắc nghiệp vụ BR1–BR21 và tiêu chí nghiệm thu.
-3. [docs/02-system-design.md](../02-system-design.md): kiến trúc, DB, API, mã lỗi, bảng truy vết.
-4. [docs/branches/README.md](README.md): nhiệm vụ từng branch và câu hỏi phỏng vấn.
+3. [docs/02-high-level-architecture.md](../02-high-level-architecture.md): kiến trúc tổng quan và sơ đồ.
+4. [docs/03-system-design.md](../03-system-design.md): DB, API, mã lỗi, bảng truy vết.
+5. [docs/branches/README.md](README.md): nhiệm vụ từng branch và câu hỏi phỏng vấn.
 
 ## 2. Trạng thái hiện tại
 
